@@ -4,7 +4,7 @@ import numpy as np
 while(1):
 
     # Get image
-    path = r'C:\Users\Matthijs\Desktop\input\input.jpg'
+    path = r'test.jpg'
     frame = cv2.imread(path)
 
     # converting from BGR to HSV color space
