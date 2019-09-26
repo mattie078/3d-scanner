@@ -11,8 +11,8 @@ while(1):
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
     # Range
-    lower_red = np.array([170, 120, 70])
-    upper_red = np.array([180, 255, 255])
+    lower_red = np.array([150,150,80])
+    upper_red = np.array([255,255,255])
     
     mask_before = cv2.inRange(hsv, lower_red, upper_red)
     mask_after = cv2.bitwise_not(mask_before)
@@ -22,4 +22,5 @@ while(1):
 
     cv2.imshow("result1",res1)
     cv2.imshow("result2",res2)
+    
     cv2.waitKey(1)
