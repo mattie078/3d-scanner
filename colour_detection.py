@@ -26,4 +26,3 @@ while(1):
     
     cv2.waitKey(1)
     
-    #Heyyy dit werrukkt
