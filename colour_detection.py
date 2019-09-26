@@ -20,7 +20,8 @@ while(1):
     res1 = cv2.bitwise_and(frame,frame,mask=mask_before)
     res2 = cv2.bitwise_and(frame,frame,mask=mask_after)
 
+    cv2.imshow("original",frame)
     cv2.imshow("result1",res1)
-    cv2.imshow("result2",res2)
+    # cv2.imshow("result2",res2)
     
     cv2.waitKey(1)
