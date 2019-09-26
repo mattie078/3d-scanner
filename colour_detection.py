@@ -25,3 +25,5 @@ while(1):
     # cv2.imshow("result2",res2)
     
     cv2.waitKey(1)
+    
+    #Heyyy dit werrukkt
