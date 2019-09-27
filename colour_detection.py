@@ -20,8 +20,15 @@ while(1):
     res1 = cv2.bitwise_and(frame,frame,mask=mask_before)
     res2 = cv2.bitwise_and(frame,frame,mask=mask_after)
 
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) 
+    gray = cv2.GaussianBlur(gray, (5, 5), 0) 
+    thresh = cv2.threshold(gray, 45, 255, cv2.THRESH_BINARY)[1] 
+    thresh = cv2.erode(thresh, None, iterations=2) 
+    thresh = cv2.dilate(thresh, None, iterations=2)
+
     cv2.imshow("original",frame)
     cv2.imshow("result1",res1)
+    cv2.imshow("thresh",thresh)
     # cv2.imshow("result2",res2)
     
     cv2.waitKey(1)
