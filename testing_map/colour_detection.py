@@ -42,7 +42,7 @@ class getContours(object):
     def calculateContour(self):
 
         #VICEOCAPTURE INPUT
-        self.cap = cv2.VideoCapture() #Video Device(webcam) is opened
+        self.cap = cv2.VideoCapture(0) #Video Device(webcam) is opened
         self.frame = self.cap.read()
 
         self.lower = np.array([self.bluelow,self.greenlow,self.redlow]) 
