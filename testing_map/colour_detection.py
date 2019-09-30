@@ -45,19 +45,19 @@ class getContours(object):
         self.cap = cv2.VideoCapture() #Video Device(webcam) is opened
         self.frame = self.cap.read()
 
-        self.lower = np.array([self.bluelow,self.greenlow,self.redlow]) #lower limit of BGR values of the laser line
-        self.upper= np.array([self.blueup,self.greenup,self.redup]) #upper limit of BGR values of the laser line
-        self.mask = cv2.inRange(self.frame, self.lower, self.upper) #create a mask within the specified values of RED
-        self.output_img = self.frame() #a copy of the main frame is created
-        self.output_img[np.where(self.mask==0)] = 0 #where the mask value is 0, make those coordinates black
-        self.output_img[np.where(self.mask>100)] =255 #The target points, or the points which belong to the laser line are displayed in white
+        self.lower = np.array([self.bluelow,self.greenlow,self.redlow]) 
+        self.upper= np.array([self.blueup,self.greenup,self.redup]) 
+        self.mask = cv2.inRange(self.frame, self.lower, self.upper) 
+        self.output_img = self.frame() 
+        self.output_img[np.where(self.mask==0)] = 0 
+        self.output_img[np.where(self.mask>100)] =255 
         self.gray = cv2.cvtColor(self.output_img, cv2.COLOR_BGR2GRAY)
         self.gray = cv2.GaussianBlur(self.gray, (5, 5), 0)
         self.thresh = cv2.threshold(self.gray, 45, 255, cv2.THRESH_BINARY)[1]
         self.thresh = cv2.erode(self.thresh, None, iterations=2)
         self.thresh = cv2.dilate(self.thresh, None, iterations=2)
     
-	    #finding the contours with RED colour
+	    #Finding the contours
         self.cnts = cv2.findContours(self.thresh.copy(), cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
         self.cnts = self.cnts[0] if imutils.is_cv2() else self.cnts[1]
 
@@ -71,7 +71,6 @@ class getContours(object):
         # cv2.imshow("result2",res2)
     
 def main():
-    #Now since you have self as parameter you need to create an object and then call the method for that object.
     my_obj = getContours()
     my_obj.calculateContour() 
 
