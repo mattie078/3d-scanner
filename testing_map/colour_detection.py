@@ -51,7 +51,7 @@ class getContours(object):
 
         self.mask = cv2.inRange(self.frame, self.lower, self.upper) 
 
-        self.mask_before = cv2.inRange(self.hsv, self.lower_red, self.upper_red)
+        self.mask_before = cv2.inRange(self.hsv, self.lower, self.upper)
         self.mask_after = cv2.bitwise_not(self.mask_before)
  
         self.res1 = cv2.bitwise_and(self.frame,self.frame,mask=self.mask_before)
