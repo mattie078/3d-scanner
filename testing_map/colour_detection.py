@@ -44,16 +44,23 @@ class getContours(object):
         #VICEOCAPTURE INPUT
         self.cap = cv2.VideoCapture(0) #Video Device(webcam) is opened
         self.frame = self.cap.read()[1]
-        self.lower = np.array([self.bluelow,self.greenlow,self.redlow]) 
-        self.upper= np.array([self.blueup,self.greenup,self.redup]) 
+        self.hsv = cv2.cvtColor(self.frame, cv2.COLOR_BGR2HSV)
+
+        self.lower = np.array([0,50,50])
+        self.upper = np.array([10,255,255])
+
         self.mask = cv2.inRange(self.frame, self.lower, self.upper) 
-        self.output_img = self.frame 
-        self.output_img[np.where(self.mask==0)] = 0 
-        self.output_img[np.where(self.mask>100)] =255 
-        self.gray = cv2.cvtColor(self.output_img, cv2.COLOR_BGR2GRAY)
-        self.gray = cv2.GaussianBlur(self.gray, (5, 5), 0)
-        self.thresh = cv2.threshold(self.gray, 45, 255, cv2.THRESH_BINARY)[1]
-        self.thresh = cv2.erode(self.thresh, None, iterations=2)
+
+        self.mask_before = cv2.inRange(self.hsv, self.lower_red, self.upper_red)
+        self.mask_after = cv2.bitwise_not(self.mask_before)
+ 
+        self.res1 = cv2.bitwise_and(self.frame,self.frame,mask=self.mask_before)
+        self.res2 = cv2.bitwise_and(self.frame,self.frame,mask=self.mask_after)
+
+        self.gray = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY) 
+        self.gray = cv2.GaussianBlur(self.gray, (5, 5), 0) 
+        self.thresh = cv2.threshold(self.gray, 45, 255, cv2.THRESH_BINARY)[1] 
+        self.thresh = cv2.erode(self.thresh, None, iterations=2) 
         self.thresh = cv2.dilate(self.thresh, None, iterations=2)
     
 	    #Finding the contours
