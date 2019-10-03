@@ -15,9 +15,9 @@ class getContours(object):
         # hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
         # # Range
-        # lower_red = np.array([150,150,80])
-        # upper_red = np.array([255,255,255])
-    
+	#self.lower = np.array([0,50,50])
+	#self.upper = np.array([10,255,255])
+            
         # mask_before = cv2.inRange(hsv, lower_red, upper_red)
         # mask_after = cv2.bitwise_not(mask_before)
  
@@ -32,23 +32,23 @@ class getContours(object):
 
         self.X=[]
         self.Y=[]
-        self.redlow=240
+        self.redlow=150
         self.redup=255
-        self.greenlow=150
+        self.greenlow=200
         self.greenup=255
-        self.bluelow=150
+        self.bluelow=200
         self.blueup=255
 
     def calculateContour(self):
 
         #VICEOCAPTURE INPUT
-        self.cap = cv2.VideoCapture("0") #Video Device(webcam) is opened
-        self.frame = self.cap.read()
-
+        self.cap = cv2.VideoCapture(0) #Video Device(webcam) is opened
+	self.frame = self.cap.read()[1]
+	self.originalImage = self.cap.read()[1]
         self.lower = np.array([self.bluelow,self.greenlow,self.redlow]) 
         self.upper= np.array([self.blueup,self.greenup,self.redup]) 
         self.mask = cv2.inRange(self.frame, self.lower, self.upper) 
-        self.output_img = self.frame() 
+        self.output_img = self.frame 
         self.output_img[np.where(self.mask==0)] = 0 
         self.output_img[np.where(self.mask>100)] =255 
         self.gray = cv2.cvtColor(self.output_img, cv2.COLOR_BGR2GRAY)
@@ -67,9 +67,10 @@ class getContours(object):
 
         # cv2.imshow("original",frame)
         cv2.imshow("result1",self.output_img)
+	cv2.imshow("original", self.originalImage)
         # cv2.imshow("thresh",thresh)
         # cv2.imshow("result2",res2)
-    
+	cv2.waitKey(0)    
 def main():
     my_obj = getContours()
     my_obj.calculateContour() 
