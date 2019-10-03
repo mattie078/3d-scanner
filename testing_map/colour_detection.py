@@ -43,13 +43,7 @@ class getContours(object):
 
         #VICEOCAPTURE INPUT
         self.cap = cv2.VideoCapture(0) #Video Device(webcam) is opened
-<<<<<<< HEAD
         self.frame = self.cap.read()[1]
-
-=======
-	self.frame = self.cap.read()[1]
-	self.originalImage = self.cap.read()[1]
->>>>>>> 77016687d465432faa6dc7757ca51f3b394e6130
         self.lower = np.array([self.bluelow,self.greenlow,self.redlow]) 
         self.upper= np.array([self.blueup,self.greenup,self.redup]) 
         self.mask = cv2.inRange(self.frame, self.lower, self.upper) 
@@ -71,13 +65,8 @@ class getContours(object):
             cv2.drawContours(self.output_img, [self.c], -1, (0, 255, 255), 2)
 
         # cv2.imshow("original",frame)
-<<<<<<< HEAD
         cv2.imwrite("output.jpg", output_img) 
         # cv2.imshow("result1",self.output_img)
-=======
-        cv2.imshow("result1",self.output_img)
-	cv2.imshow("original", self.originalImage)
->>>>>>> 77016687d465432faa6dc7757ca51f3b394e6130
         # cv2.imshow("thresh",thresh)
         # cv2.imshow("result2",res2)
 	cv2.waitKey(0)    
