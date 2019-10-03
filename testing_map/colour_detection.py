@@ -65,7 +65,7 @@ class getContours(object):
             cv2.drawContours(self.output_img, [self.c], -1, (0, 255, 255), 2)
 
         # cv2.imshow("original",frame)
-        cv2.imwrite("output.jpg", output_img) 
+        cv2.imwrite("output.jpg", self.output_img) 
         # cv2.imshow("result1",self.output_img)
         # cv2.imshow("thresh",thresh)
         # cv2.imshow("result2",res2)
