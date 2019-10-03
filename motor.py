@@ -1,35 +1,45 @@
+from picamera import PiCamera
 import RPi.GPIO as GPIO
 import time
+from datetime import datetime
+from Filter import Filter
 
-try:
-    GPIO.setmode(GPIO.BCM)
+class Motor:
+    try:
+        camera = PiCamera()
+        GPIO.setmode(GPIO.BCM)
+        ControlPin = [6,13,19,26]
+        filter1 = Filter()
+        for pin in ControlPin:
+            GPIO.setup(pin,GPIO.OUT)
+            GPIO.output(pin,0)
 
-    ControlPin = [6,13,19,26]
-
-    for pin in ControlPin:
-        GPIO.setup(pin,GPIO.OUT)
-        GPIO.output(pin,0)
-
-    seq = [[1,0,0,0],
-           [1,1,0,0],
-           [0,1,0,0],
-           [0,1,1,0],
-           [0,0,1,0],
-           [0,0,1,1],
-           [0,0,0,1],
-           [1,0,0,1],
-           [1,0,0,0]]
-    #ismahaan!!!!!!!!
-
-    for i in range(512):
-        for halfstep in range(9):
-            for pin in range(4):
-                GPIO.output(ControlPin[pin], seq[halfstep][pin])
-                time.sleep(0.0001)
-                print("DRAAIEN!!!!")
-            
-except:
-    print('hallo')
-    
-finally:
-    GPIO.cleanup()
+        seq = [[1,0,0,0],
+               [1,1,0,0],
+               [0,1,0,0],
+               [0,1,1,0],
+               [0,0,1,0],
+               [0,0,1,1],
+               [0,0,0,1],
+               [1,0,0,1],
+               [1,0,0,0]]
+        #ismahaan!!!!!!!!
+        
+        for m in range(73):
+            fotonaam = 'test' + datetime.now().strftime("%Y-%m-%d_%H.%M.%S.jpg")
+            punt = camera.capture('/home/pi/Desktop/Fotos/'+fotonaam)
+            print(fotonaam)
+            #filter1.colorDetection(fotonaam, m)
+            for i in range(7):
+                for halfstep in range(9):
+                    for pin in range(4):
+                        GPIO.output(ControlPin[pin], seq[halfstep][pin])
+                        time.sleep(0.0001)
+            #print("DRAAIEN!!!!")
+            time.sleep(1)
+                    
+    except:
+        print('mislukt')
+        
+    finally:
+        GPIO.cleanup()
