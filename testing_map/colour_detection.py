@@ -3,8 +3,8 @@ import numpy as np
 import imutils
 from picamera import PiCamera
 
-class getContours(object):
-    
+class GetContours(object):
+
     def __init__(self):
 
         self.X=[]
@@ -50,7 +50,7 @@ class getContours(object):
         cv2.imwrite("output.jpg", self.output_img)
 
 def main():
-    my_obj = getContours()
+    my_obj = GetContours()
     my_obj.calculateContour() 
 
 if __name__ == "__main__":
