@@ -20,17 +20,18 @@ class getContours(object):
     def calculateContour(self):
 
         self.cap = cv2.VideoCapture(0)
-        _, self.frame = self.cap.read()
-        print(self.frame.shape)
+        #_, self.frame = self.cap.read()
+        self.frame = cv2.imread('test.jpg')
+	print(self.frame.shape)
         #self.path = r'test.jpg'
         #self.frame = cv2.imread(self.path) #Read the video device input
 		#self.frame = cv2.flip(self.frame, 1) #This should be uncommented to get the mirror image of the actual frame
         #self.frame = self.camera.capture('foo.jpg')
         #cv2.imwrite("input.jpg", self.frame)
-        self.hsv = cv2.cvtColor(self.frame, cv2.COLOR_BGR2HSV)
+        #self.hsv = cv2.cvtColor(self.frame, cv2.COLOR_BGR2HSV)
         self.lower = np.array([self.bluelow,self.greenlow,self.redlow]) #lower limit of BGR values of the laser line
         self.upper= np.array([self.blueup,self.greenup,self.redup]) #upper limit of BGR values of the laser line
-        self.mask = cv2.inRange(self.hsv, self.lower, self.upper) #create a mask within the specified values of RED
+        self.mask = cv2.inRange(self.frame, self.lower, self.upper) #create a mask within the specified values of RED
         self.output_img = self.frame.copy() #a copy of the main frame is created
         self.output_img[np.where(self.mask==0)] = 0 #where the mask value is 0, make those coordinates black
         self.output_img[np.where(self.mask>100)] =255 #The target points, or the points which belong to the laser line are displayed in white
