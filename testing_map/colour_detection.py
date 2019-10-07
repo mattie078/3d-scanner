@@ -21,6 +21,7 @@ class getContours(object):
 
         self.cap = cv2.VideoCapture(0)
         _, self.frame = self.cap.read()
+        print(self.frame.shape)
         #self.path = r'test.jpg'
         #self.frame = cv2.imread(self.path) #Read the video device input
 		#self.frame = cv2.flip(self.frame, 1) #This should be uncommented to get the mirror image of the actual frame
