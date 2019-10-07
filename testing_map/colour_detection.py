@@ -41,7 +41,7 @@ class getContours(object):
         for i in range(len(self.cnts)):
                 self.c=self.cnts[i]
                 cv2.drawContours(self.output_img, [self.c], -1, (0, 255, 255), 2) #Draw all the contours with a red background
-        self.cv2.imwrite("output.jpg", self.output_img)
+        cv2.imwrite("output.jpg", self.output_img)
 
 def main():
     my_obj = getContours()
