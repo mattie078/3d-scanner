@@ -24,7 +24,7 @@ class getContours(object):
         #self.frame = cv2.imread(self.path) #Read the video device input
 		#self.frame = cv2.flip(self.frame, 1) #This should be uncommented to get the mirror image of the actual frame
         self.frame = self.camera.capture('foo.jpg')
-        cv2.imwrite("input.jpg", self.frame)
+        #cv2.imwrite("input.jpg", self.frame)
         self.lower = np.array([self.bluelow,self.greenlow,self.redlow]) #lower limit of BGR values of the laser line
         self.upper= np.array([self.blueup,self.greenup,self.redup]) #upper limit of BGR values of the laser line
         self.mask = cv2.inRange(self.frame, self.lower, self.upper) #create a mask within the specified values of RED
