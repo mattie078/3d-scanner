@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import imutils
-
+from picamera import PiCamera
 
 class getContours(object):
     
@@ -15,6 +15,7 @@ class getContours(object):
         self.greenup=255
         self.bluelow=150
         self.blueup=255
+        self.camera = PiCamera()
 
     def calculateContour(self):
 
@@ -22,7 +23,7 @@ class getContours(object):
         self.path = r'test.jpg'
         #self.frame = cv2.imread(self.path) #Read the video device input
 		#self.frame = cv2.flip(self.frame, 1) #This should be uncommented to get the mirror image of the actual frame
-        self.frame = self.cap.read()[1]
+        self.frame = self.camera.capture('foo.jpg')
         cv2.imwrite("input.jpg", self.frame)
         self.lower = np.array([self.bluelow,self.greenlow,self.redlow]) #lower limit of BGR values of the laser line
         self.upper= np.array([self.blueup,self.greenup,self.redup]) #upper limit of BGR values of the laser line
