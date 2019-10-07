@@ -27,7 +27,7 @@ class Motor:
         
         for m in range(73):
             fotonaam = 'test' + str(m) + ".jpg"
-            camera.capture('/home/pi/Desktop/Fotos/'+fotonaam)
+            camera.capture('/home/pi/Desktop/3d-scanner/Fotos/'+fotonaam)
             print(fotonaam)
             filter1.colorDetection(m)
             for i in range(7):
