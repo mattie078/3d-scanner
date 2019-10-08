@@ -1,27 +1,28 @@
 import cv2
 import numpy as np
 
-while(1):
+# Get image
+path = r'test.jpg'
+image = cv2.imread(path)
 
-    # Get image
-    path = r'test.jpg'
-    frame = cv2.imread(path)
+hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+         
+lower_red = np.array([150,150,80])
+upper_red = np.array([255,255,255])
 
-    # converting from BGR to HSV color space
-    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+mask = cv2.inRange(hsv,lower_red,upper_red)
+#cv2.imshow("hsv", mask)
 
-    # Range
-    lower_red = np.array([150,150,80])
-    upper_red = np.array([255,255,255])
-    
-    mask_before = cv2.inRange(hsv, lower_red, upper_red)
-    mask_after = cv2.bitwise_not(mask_before)
- 
-    res1 = cv2.bitwise_and(frame,frame,mask=mask_before)
-    res2 = cv2.bitwise_and(frame,frame,mask=mask_after)
+print(mask.shape)
 
-    cv2.imshow("original",frame)
-    cv2.imshow("result1",res1)
-    # cv2.imshow("result2",res2)
-    
-    cv2.waitKey(1)
+new_image = cv2.cvtColor(mask, cv2.COLOR_HSV2BGR)
+print(mask[526,400]) # [254 254 254]
+
+sought = [94,133,218]
+
+#image[np.where((image==[94,133,218]).all(axis=2))] = [255,255,255]
+
+#result = np.count_nonzero(np.all(mask==sought,axis=2))
+#print(result)
+# cv2.waitKey(100000)
+# cv2.destroyAllWindows()

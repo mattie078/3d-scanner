@@ -14,3 +14,4 @@ class Filter:
         
         
         cv2.imwrite('/home/pi/Desktop/3d-scanner/FotosHSV/filter' +str(m)+'.jpg', mask)
+
