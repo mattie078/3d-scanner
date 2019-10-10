@@ -11,18 +11,20 @@ lower_red = np.array([150,150,80])
 upper_red = np.array([255,255,255])
 
 mask = cv2.inRange(hsv,lower_red,upper_red)
-#cv2.imshow("hsv", mask)
 
-print(mask.shape)
+new_image = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
+print(new_image.shape)
 
-new_image = cv2.cvtColor(mask, cv2.COLOR_HSV2BGR)
-print(mask[526,400]) # [254 254 254]
+sought = [255,255,255]
 
-sought = [94,133,218]
+indices = np.where(new_image == [255])
+coordinates = list(zip(indices[0], indices[1]))
 
-#image[np.where((image==[94,133,218]).all(axis=2))] = [255,255,255]
+zipped_list = coordinates[:]
+print(len(zipped_list))
 
-#result = np.count_nonzero(np.all(mask==sought,axis=2))
+#result = np.count_nonzero(np.all(new_image==sought,axis=2))
 #print(result)
-# cv2.waitKey(100000)
-# cv2.destroyAllWindows()
+
+# cv2.imshow("hsv", hsv)
+# cv2.imshow("gray", new_image)
