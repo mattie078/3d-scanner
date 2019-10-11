@@ -23,8 +23,9 @@ for index in coordinates:
         coordinatesNoDupes.append(index)
 
 zipped_list = coordinatesNoDupes[:]
-print(zipped_list)
-print(len(zipped_list))
+#print(zipped_list)
+#print(len(zipped_list))
+np.savetxt('xycoordinates', zipped_list, fmt = '%d')
 
 #result = np.count_nonzero(np.all(new_image==sought,axis=2))
 #print(result)
