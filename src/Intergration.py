@@ -25,9 +25,7 @@ class Integration(): #a class is defined
 		self.Y1=[]
 		self.Z1=[]
 		
-	def ReadFile(self,folderpath):
-		os.chdir(folderpath)
-		for i in range(0,48): 
+	def ReadFile(self):
 			f=open(str(i)+'.txt','r')
 			data=f.read().split('\n\n')
 			data[0]=data[0][1:(len(data[0])-1)]
@@ -71,26 +69,4 @@ class Integration(): #a class is defined
 			self.Y1.append(finalR[i] * np.sin(finaltheta[i]) * np.sin(finalphi[i])) #final y coordinate of the point for plotting
 			self.Z1.append(finalR[i] * np.cos(finaltheta[i])) #final z coordinate of the point for plotting
 		
-		SavePLY.SavePLY(self.X1,self.Y1,self.Z1)
-		
-	def PlotTrisurf(self):	#function for plotting the Surface Plot
-		fig = plt.figure()
-		ax = fig.add_subplot(111, projection='3d')
-		ax.plot_trisurf(self.X1, self.Y1, self.Z1)
-		plt.show()
-	
-	def PlotScatter(self):	#function for plotting the Scatter Plot
-		fig = plt.figure()
-		ax = fig.add_subplot(111, projection='3d')
-		ax.scatter(self.X1, self.Y1, self.Z1)
-		plt.show()
-		
-
-'''This code is a part of the 3D Scanner project'''
-'''Developed by team SAAS'''
-'''Ekalavya 2017'''
-'''IIT Bombay'''
-'''Click here https://github.com/animeshsrivastava24/3D-SCANNER-IITB/wiki/8.0-How-to-plot-the-points-to-generate-3D-cloud-point-taking-help-of-SavePLY-file-(Analysis-of-Code-of-Integration.ply)
-   to understand the above code'''
-
-		
+		#SavePLY.SavePLY(self.X1,self.Y1,self.Z1)

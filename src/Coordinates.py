@@ -1,9 +1,9 @@
 import cv2
 import numpy as np
 
-class Coordinates:
+class Coordinates():
     
-    def calculateCoordinates(self):
+    def calculateCoordinates():
         # Get image
         path = r'test.jpg'
         image = cv2.imread(path)
@@ -27,4 +27,4 @@ class Coordinates:
                 coordinatesNoDupes.append(index)
 
         zipped_list = coordinatesNoDupes[:]
-        np.savetxt('xycoordinates', zipped_list, fmt = '%d')
+        np.savetxt('xycoordinates.txt', zipped_list, fmt = '%d')
