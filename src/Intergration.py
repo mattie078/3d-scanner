@@ -11,27 +11,34 @@ import matplotlib
 from matplotlib import cm
 from matplotlib import pyplot as plt
 import os
-import SavePLY
 
-class Integration(): #a class is defined
+class Intergration(): #a class is defined
 	
 	def __init__(self):
 		self.X=[] #this will contain the x coordinates of all the frames
 		self.Y=[] #this will contain the y coordinates of all the frames
-		self.Radius=[] #This will contain value of all the Rs
-		self.theta=[] #This will contain all the values of theta
-		self.phi=[] #This will contain the phi values of all the points
+
 		self.X1=[]
 		self.Y1=[]
 		self.Z1=[]
-		
-	def ReadFile(self):
-			f=open(str(i)+'.txt','r')
-			data=f.read().split('\n\n')
-			data[0]=data[0][1:(len(data[0])-1)]
-			data[1]=data[1][1:(len(data[1])-1)]
-			Xcoordinate=data[1].split(',')
-			Ycoordinate=data[0].split(',')
+
+	def ReadFile():
+
+			Xcoordinate=[]
+			Ycoordinate=[]
+
+			Radius=[] #This will contain value of all the Rs
+			theta=[] #This will contain all the values of theta
+			phi=[] #This will contain the phi values of all the points
+			f=open('xycoordinates.txt','r')
+			data=f.read().split('\n')
+			
+			for i in range(len(data)-1):
+				temp_string = data[i]
+				splits = temp_string.split(' ')
+				Ycoordinate.append(int(splits[0]))
+				Xcoordinate.append(int(splits[1]))
+
 			R=[] #this will contain the value of Radius for a single frame
 			th=[] #this will contains the values of all the theta for a single frame
 			for i in range(len(Xcoordinate)):
@@ -44,14 +51,10 @@ class Integration(): #a class is defined
 				else:
 					th.append(np.arctan(float(Ycoordinate[i])/float(Xcoordinate[i]))) #formula for calculation of theta	
 			
+			Radius.append(R) #append the values of the Radius in self.Radius
+			theta.append(th) #append the values oh theta in self.theta
 			
-			self.Radius.append(R) #append the values of the Radius in self.Radius
-			self.theta.append(th) #append the values oh theta in self.theta
-			
-		for k in range(48):
-			self.phi.append((0.1308)*k) #formula for appending the value of phi in the value of the coordinates of a particular frame
-			
-		print (self.phi)
+			phi.append((0.1308)*k) #formula for appending the value of phi in the value of the coordinates of a particular frame
 			
 	def CalculateXYZ(self): #function for calculation of X,Y,Z from R,theta,phi
 		finalR=[]
