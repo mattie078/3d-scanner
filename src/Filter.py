@@ -6,7 +6,7 @@ class Filter:
 	 for n in range(0,72):
 		image = cv2.imread('/home/pi/Desktop/3d-scanner/Fotos/test' + str(n) + '.jpg')
         	
-		hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+		hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
          	
 		lower_red = np.array([253,245,245])
 		upper_red = np.array([255,255,255])
