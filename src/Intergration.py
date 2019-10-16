@@ -23,14 +23,16 @@ class Intergration(): #a class is defined
 		self.Y1=[]
 		self.Z1=[]
 
-	def ReadFile():
+	def ReadFile(self):
 
 			Xcoordinate=[]
 			Ycoordinate=[]
 
-			Radius=[] #This will contain value of all the Rs
-			theta=[] #This will contain all the values of theta
-			phi=[] #This will contain the phi values of all the points
+			self.Radius=[] #This will contain value of all the Rs
+			self.theta=[] #This will contain all the values of theta
+			self.phi=[] #This will contain the phi values of all the points
+
+			#for i in range(0,72): 
 			f=open('xycoordinates.txt','r')
 			data=f.read().split('\n')
 			
@@ -52,10 +54,11 @@ class Intergration(): #a class is defined
 				else:
 					th.append(np.arctan(float(Ycoordinate[i])/float(Xcoordinate[i]))) #formula for calculation of theta	
 			
-			Radius.append(R) #append the values of the Radius in self.Radius
-			theta.append(th) #append the values oh theta in self.theta
+			self.Radius.append(R) #append the values of the Radius in self.Radius
+			self.theta.append(th) #append the values oh theta in self.theta
 			
-			phi.append((0.1308)*k) #formula for appending the value of phi in the value of the coordinates of a particular frame
+			for k in range(1):
+				self.phi.append((0.1308)*k) #formula for appending the value of phi in the value of the coordinates of a particular frame
 			
 	def CalculateXYZ(self): #function for calculation of X,Y,Z from R,theta,phi
 		finalR=[]
@@ -73,4 +76,4 @@ class Intergration(): #a class is defined
 			self.Y1.append(finalR[i] * np.sin(finaltheta[i]) * np.sin(finalphi[i])) #final y coordinate of the point for plotting
 			self.Z1.append(finalR[i] * np.cos(finaltheta[i])) #final z coordinate of the point for plotting
 		
-		ConvertToPly.ConvertToPly(self.X1,self.Y1,self.Z1)
+		ConvertToPly(self.X1,self.Y1,self.Z1)
