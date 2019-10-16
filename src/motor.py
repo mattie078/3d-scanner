@@ -1,4 +1,4 @@
-from picamera import PiCamera
+#from picamera import PiCamera
 import RPi.GPIO as GPIO
 import time
 from datetime import datetime
@@ -6,7 +6,7 @@ from Filter import Filter
 
 class Motor:
     try:
-        camera = PiCamera()
+        #camera = PiCamera()
         GPIO.setmode(GPIO.BCM)
         ControlPin = [6,13,19,26]
         filter1 = Filter()
@@ -27,7 +27,7 @@ class Motor:
         
         for m in range(73):
             fotonaam = 'test' + str(m) + ".jpg"
-            camera.capture('/home/pi/Desktop/3d-scanner/Fotos/'+fotonaam)
+            #camera.capture('/home/pi/Desktop/3d-scanner/Fotos/'+fotonaam)
             print(fotonaam)
             filter1.colorDetection(m)
             for i in range(7):
