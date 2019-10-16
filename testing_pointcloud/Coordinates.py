@@ -3,9 +3,10 @@ import numpy as np
 
 class Coordinates():
     
-    def calculateCoordinates():
+    def calculateCoordinates(i):
         # Get image
-        path = r'test.jpg'
+        path = r'FotosHSV\filter' + str(i) + r'.jpg'
+        print(path)
         image = cv2.imread(path)
 
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)

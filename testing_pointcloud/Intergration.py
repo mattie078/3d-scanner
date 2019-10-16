@@ -23,7 +23,7 @@ class Intergration(): #a class is defined
 		self.Y1=[]
 		self.Z1=[]
 
-	def ReadFile(self):
+	def ReadFile(self, i):
 
 			Xcoordinate=[]
 			Ycoordinate=[]
