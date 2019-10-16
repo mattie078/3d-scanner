@@ -4,6 +4,7 @@
 '''IIT Bombay'''
 
 #import the necessary packages
+from ConvertToPly import ConvertToPly
 import math
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
@@ -72,4 +73,4 @@ class Intergration(): #a class is defined
 			self.Y1.append(finalR[i] * np.sin(finaltheta[i]) * np.sin(finalphi[i])) #final y coordinate of the point for plotting
 			self.Z1.append(finalR[i] * np.cos(finaltheta[i])) #final z coordinate of the point for plotting
 		
-		#SavePLY.SavePLY(self.X1,self.Y1,self.Z1)
+		ConvertToPly.ConvertToPly(self.X1,self.Y1,self.Z1)
