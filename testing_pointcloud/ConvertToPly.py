@@ -25,6 +25,10 @@ def ConvertToPly(x,y,z):
 	# coördinaten worden toegevoegd aan het bestand
 	for i in range(len(x)):
 		file.write(str(x[i])+" ")
+		#print('X ' + str(x[i]))
 		file.write(str(y[i])+" ")
+		#print('Y ' + str(y[i]))
 		file.write(str(z[i])+"\n")
+		#print('Z ' + str(z[i]))
+
 	file.close()

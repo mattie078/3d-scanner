@@ -3,29 +3,31 @@ import numpy as np
 
 class Coordinates():
     
-    def calculateCoordinates(i):
-        # Get image
-        path = r'FotosHSV\filter' + str(i) + r'.jpg'
-        print(path)
-        image = cv2.imread(path)
+    def calculateCoordinates():
+        for i in range(73):
+            # Get image
+            path = "Fotos/test" + str(i) + "-min.jpg"
+            #path = "test.jpg"
+            print(path)
+            image = cv2.imread(path)
 
-        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+            hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
          
-        lower_red = np.array([150, 150, 80])
-        upper_red = np.array([255, 255, 255])
+            lower_red = np.array([150, 150, 80])
+            upper_red = np.array([255, 255, 255])
 
-        mask = cv2.inRange(hsv, lower_red, upper_red)
+            mask = cv2.inRange(hsv, lower_red, upper_red)
 
-        new_image = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
+            new_image = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
 
-        indices = np.where(new_image == [255])
+            indices = np.where(new_image == [255])
 
-        coordinates = list(zip(indices[0], indices[1]))
-        coordinatesNoDupes = []
+            coordinates = list(zip(indices[0], indices[1]))
+            coordinatesNoDupes = []
 
-        for index in coordinates:
-            if index not in coordinatesNoDupes:
-                coordinatesNoDupes.append(index)
+            for index in coordinates:
+                if index not in coordinatesNoDupes:
+                    coordinatesNoDupes.append(index)
 
-        zipped_list = coordinatesNoDupes[:]
-        np.savetxt('xycoordinates.txt', zipped_list, fmt = '%d')
+            zipped_list = coordinatesNoDupes[:]
+            np.savetxt('xycoordinates' + str(i) + '.txt', zipped_list, fmt = '%d')
