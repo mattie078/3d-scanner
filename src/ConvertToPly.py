@@ -1,8 +1,9 @@
 # deze functie maakt een ply bestand van drie lists met punten.
 
-def ConvertToPly(x,y,z):
+
+def convertToPly(x, y, z):
 	# er wordt een bestand aangemaakt om de gegevens in op te slaan
-	file = open("pointCloud.ply","w+")
+	file = open("pointCloud.ply", "w+")
 
 	# de  header van het bestand wordt aangemaakt.
 	header = []
@@ -10,7 +11,7 @@ def ConvertToPly(x,y,z):
 		header.append("0")
 	header[0] = "ply"
 	header[1] = "format ascii 1.0"
-	header[2] = "element vertex "+ str(len(x))
+	header[2] = "element vertex " + str(len(x))
 	header[3] = "property float32 x"
 	header[4] = "property float32 y"
 	header[5] = "property float32 z"
