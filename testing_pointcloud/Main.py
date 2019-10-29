@@ -3,7 +3,7 @@ from Intergration import Intergration
 
 def main():
 
-    #Coordinates.calculateCoordinates()
+    Coordinates.calculateCoordinates()
     Temp = Intergration()
     Intergration.ReadFile(Temp)
     Intergration.CalculateXYZ(Temp)

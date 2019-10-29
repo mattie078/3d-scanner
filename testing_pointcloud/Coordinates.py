@@ -6,7 +6,7 @@ class Coordinates():
     def calculateCoordinates():
         for i in range(73):
             # Get image
-            path = "Fotos/test" + str(i) + "-min.jpg"
+            path = "Fotos/test" + str(i) + ".jpg"
             #path = "test.jpg"
             print(path)
             image = cv2.imread(path)
