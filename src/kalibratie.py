@@ -3,5 +3,5 @@ import time
 
 camera = PiCamera()
 time.sleep(1)
-camera.capture('/home/pi/Desktop/3d-scanner/Fotos/40mm.jpg')
+camera.capture('/home/pi/Desktop/3d-scanner/Fotos/180mm.jpg')
 time.sleep(1)
