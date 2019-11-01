@@ -10,7 +10,7 @@ class Motor:
         camera = PiCamera()
         GPIO.setmode(GPIO.BCM)
         ControlPin = [6,13,19,26]
-        filter1 = Filter()
+        filterImage = Filter()
         for pin in ControlPin:
             GPIO.setup(pin,GPIO.OUT)
             GPIO.output(pin,0)
@@ -27,11 +27,12 @@ class Motor:
                [1,0,0,0]]
 
         # Maakt 73 fotos (0 tot 72) en slaat deze op met de juiste benaming
+        # Zet de filter op de foto
         for m in range(73):
-            fotonaam = 'test' + str(m) + ".jpg"
+            fotonaam = 'temp' + str(m) + ".jpg"
             camera.capture('/home/pi/Desktop/3d-scanner/Fotos/'+fotonaam)
             print(fotonaam)
-            filter1.colorDetection(m)
+            filterImage.colorDetection(m)
             for i in range(7):
                 for halfstep in range(9):
                     for pin in range(4):
