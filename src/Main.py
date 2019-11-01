@@ -3,13 +3,13 @@ from Intergration import Intergration
 from Motor import Motor
 
 def main():
-    MotorObject = Motor()
+    # MotorObject = Motor()
     
     Coordinates.calculateCoordinates()
     
-    Temp = Intergration()
-    Intergration.ReadFile(Temp)
-    Intergration.CalculateXYZ(Temp)
+    # Temp = Intergration()
+    # Intergration.ReadFile(Temp)
+    # Intergration.CalculateXYZ(Temp)
 
 if __name__ == "__main__":
     main()
