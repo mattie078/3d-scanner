@@ -15,4 +15,5 @@ class Filter:
         cv2.imwrite('../FotosHSV/filter' +str(m)+'.jpg', mask)
 
     for i in range(73):
+        print("Masking photo " + str(i))
         colorDetection(0,i)
