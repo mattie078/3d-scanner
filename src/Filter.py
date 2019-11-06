@@ -3,15 +3,17 @@ import cv2
 
 class Filter:
     def colorDetection(self, m):
-        image = cv2.imread('/home/pi/Desktop/3d-scanner/Fotos/temp' + str(m) + '.jpg')
+        image = cv2.imread('../Fotos/test' + str(m) + '.jpg')
         
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
          
-        lower_red = np.array([150,150,80])
-        upper_red = np.array([255,255,255])
+        lower_red = np.array([150, 150, 80])
+        upper_red = np.array([255, 255, 255])
 
-        mask = cv2.inRange(hsv,lower_red,upper_red)
-        
-        
-        cv2.imwrite('/home/pi/Desktop/3d-scanner/FotosHSV/filter' +str(m)+'.jpg', mask)
+        mask = cv2.inRange(hsv, lower_red, upper_red)
 
+        cv2.imwrite('../FotosHSV/filter' +str(m)+'.jpg', mask)
+
+    for i in range(73):
+        print("Masking photo " + str(i))
+        colorDetection(0,i)
