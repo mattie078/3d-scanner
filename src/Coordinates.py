@@ -34,22 +34,20 @@ class Coordinates:
             df2 = df2.drop_duplicates()
             
             # This code gets all Y values from specific X value (X values are still in array type)
+            listWalker = 0
+            avgList = []
 
             for index_old, non_dublicated_yVal in df2.iteritems(): 
-                val = df.loc[df['yVal'] == non_dublicated_yVal, 'xVal']
+                val = df.loc[df["xVal"] == non_dublicated_yVal, "yVal"]
 
                 # val.real returns array with values instead of an dataframe
                 val_np = np.array(val.real)
                 if val_np.size != 0:
-                    print("Max = " + str(val_np.max(axis=0)))
-                    print("Min = " + str(val_np.min(axis=0)))
 
-                    print("Supposed X values: " + str(val.real))
-                    print("Supposed Y value: " + str(non_dublicated_yVal))
-            #print("Last value = " + val)
-            # for i, row in df.iterrows():
-            #     print("Values = " + df.loc[df['yVal'] == row, 'xVal'].iloc[0])
-            # print("Finished calc:"+str(i))
-            #np.savetxt('..\calcs\\tempCalc' + str(i) + '.txt', avgList, fmt='%d')
+                    length = val_np.max(axis=0)-val_np.min(axis=0)
+                    avgList.append([non_dublicated_yVal, length])
+
+            print("Finished calc:"+str(i))
+            np.savetxt('..\calcs\\tempCalc' + str(i) + '.txt', avgList, fmt='%d')
 
     calculateCoordinates(0)
