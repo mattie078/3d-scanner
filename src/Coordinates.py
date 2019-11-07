@@ -12,16 +12,14 @@ class Coordinates:
             path = "..\\FotosHSV\\filter" + str(i) + ".jpg"
             new_image = cv2.imread(path)
 
-            # Kijkt en slaat de pixels op in xycoordinates die wit zijn 
+            # Pakt alle coordinaten waarop de foto de punten wit zijn
             indices = np.where(new_image == [255])
 
-            # for width in range(0,1920):
-            #     for height in range(0,1080):
-            #         print(indices[width][height])
-
+            # Pakt alle coordinaten en zet ze in een list
             coordinates = list(zip(indices[0], indices[1]))
-            coordinates_no_dupes = []
 
+            # Pakt alle coordinates en verwijderd alle duplicates
+            coordinates_no_dupes = []
             for index in coordinates:
                 if index not in coordinates_no_dupes:
                     coordinates_no_dupes.append(index)
@@ -37,7 +35,7 @@ class Coordinates:
             avg_list = []
 
             for index_old, non_duplicated_yVal in df2.iteritems():
-                val = df.loc[df["xVal"] == non_duplicated_yVal, "yVal"]
+                val = df.loc[df["yVal"] == non_duplicated_yVal, "xVal"]
 
                 # val.real returns array with values instead of an dataframe
                 val_np = np.array(val.real)
