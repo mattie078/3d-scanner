@@ -1,4 +1,24 @@
+import numpy as np
+
 # deze functie maakt een ply bestand van drie lists met punten.
+
+def CalculateXYZ(self):
+
+	X1=[]
+	Y1=[]
+	Z1=[]
+	
+	for i in range(0,73): 
+		
+		path = '..\\sphereCoords\\list' + str(i) + '.txt'
+		data_array = np.loadtxt(fname=path)
+
+		for j in range(0, data_array.shape[0]):
+			X1.append(data_array[j][0] * np.sin(data_array[j][1]) * np.cos(data_array[j][2])) 
+			Y1.append(data_array[j][0] * np.sin(data_array[j][1]) * np.sin(data_array[j][2])) 
+			Z1.append(data_array[j][0] * np.cos(data_array[j][1])) 
+	
+	convertToPly(X1,Y1,Z1)
 
 
 def convertToPly(x, y, z):
@@ -29,3 +49,5 @@ def convertToPly(x, y, z):
 		file.write(str(y[i])+" ")
 		file.write(str(z[i])+"\n")
 	file.close()
+
+CalculateXYZ(0)

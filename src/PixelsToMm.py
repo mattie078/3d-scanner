@@ -6,12 +6,18 @@ import pandas as pd
 class PixelsToMm:
 
     def calculate_real_distances(self):
+        # Formula from calibration: 
+        # mm = (6,3933* pixels) - 10,338
+        
         # a*milimeters + b = pixels
         a = 7
         b = 12
         hoek = 12
         platform_pixel_y_waarde = 800
+
+        # Wat is dit? @Herman
         verticale_resolutie = 1080
+
         sinus_hoek = np.sin(np.deg2rad(hoek))
         for i in range(73):
             # Pakt de lijnbreedtes per y-coordinaat die net zijn berekend
