@@ -8,7 +8,7 @@ class PixelsToMm:
     def calculate_real_distances(self):
         # Formula from calibration: 
         # mm = (6,3933* pixels) - 10,338
-        
+
         # a*milimeters + b = pixels
         a = 7
         b = 12
@@ -24,6 +24,8 @@ class PixelsToMm:
             path = '..\\calcs\\tempCalc'+str(i)+'.txt'
             data_array = np.loadtxt(fname=path, dtype='int')
 
+            # Meer comments pls
+            
             end_array = np.zeros((data_array.shape[0], 3))
             for j in range(0, data_array.shape[0]):
                 y_waarde = data_array[j][0]

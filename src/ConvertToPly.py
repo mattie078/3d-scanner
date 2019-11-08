@@ -13,6 +13,7 @@ def CalculateXYZ(self):
 		path = '..\\sphereCoords\\list' + str(i) + '.txt'
 		data_array = np.loadtxt(fname=path)
 
+		# Convert spherical coordinates to cartesian format - See https://nl.wikipedia.org/wiki/Bolco%C3%B6rdinaten
 		for j in range(0, data_array.shape[0]):
 			X1.append(data_array[j][0] * np.sin(data_array[j][1]) * np.cos(data_array[j][2])) 
 			Y1.append(data_array[j][0] * np.sin(data_array[j][1]) * np.sin(data_array[j][2])) 
@@ -22,10 +23,10 @@ def CalculateXYZ(self):
 
 
 def convertToPly(x, y, z):
-	# er wordt een bestand aangemaakt om de gegevens in op te slaan
+	# A file will be made to store the pointcloud
 	file = open("pointCloud.ply", "w+")
 
-	# de  header van het bestand wordt aangemaakt.
+	# Store the standard header in an array
 	header = []
 	for i in range(9):
 		header.append("0")
@@ -39,11 +40,11 @@ def convertToPly(x, y, z):
 	header[7] = "property list uint8 int32 vertex_indices"
 	header[8] = "end_header"
 
-	# de header wordt toegevoegd aan het bestand
+	# Adds the header to the file
 	for i in range(len(header)):
 		file.write(header[i]+"\n")
 
-	# coördinaten worden toegevoegd aan het bestand
+	# Adds the coordinates to the Pointcloud file
 	for i in range(len(x)):
 		file.write(str(x[i])+" ")
 		file.write(str(y[i])+" ")
