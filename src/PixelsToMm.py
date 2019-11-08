@@ -16,10 +16,10 @@ class PixelsToMm:
         for i in range(73):
             # Pakt de lijnbreedtes per y-coordinaat die net zijn berekend
             path = '..\\calcs\\tempCalc'+str(i)+'.txt'
-            data_array = np.loadtxt(fname=path)
+            data_array = np.loadtxt(fname=path, dtype='int')
 
-            end_array = np.zeros((data_array.size, 3))
-            for j in range(0, data_array.size):
+            end_array = np.zeros((data_array.shape[0], 3))
+            for j in range(0, data_array.shape[0]):
                 y_waarde = data_array[j][0]
                 pixel_hoogte = verticale_resolutie - (y_waarde - platform_pixel_y_waarde)
                 pixel_breedte = data_array[j][1]
@@ -31,6 +31,7 @@ class PixelsToMm:
                 tau = np.rad2deg(np.arctan(mm_hoogte/mm_afstand))
                 phi = hoek + i * (360/73)
                 end_array[j] = [r, tau, phi]
-                np.savetxt('..\\sphereCoords\\list' + str(i) + '.txt', end_array, fmt='%d')
+            print("Finished sphereCoords:"+str(i))
+            np.savetxt('..\\sphereCoords\\list' + str(i) + '.txt', end_array, fmt='%f')
 
     calculate_real_distances(0)
