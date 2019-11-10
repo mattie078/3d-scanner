@@ -38,9 +38,9 @@ class PixelsToMm:
                 mm_breedte = ((pixel_breedte - b) / a)
                 mm_afstand = mm_breedte/sinus_hoek
                 r = np.square(mm_hoogte)+np.square(mm_afstand)
-                tau = np.rad2deg(np.arctan(mm_hoogte/mm_afstand))
+                theta = np.rad2deg(np.arctan(mm_hoogte/mm_afstand))
                 phi = hoek + i * (360/73)
-                end_array[j] = [r, tau, phi]
+                end_array[j] = [r, theta, phi]
             print("Finished sphereCoords:"+str(i))
             np.savetxt('..\\sphereCoords\\list' + str(i) + '.txt', end_array, fmt='%f')
 
