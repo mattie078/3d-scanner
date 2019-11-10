@@ -7,15 +7,17 @@ class PixelsToMm:
 
     def calculate_real_distances(self):
         # Formula from calibration: 
-        # mm = (6,3933* pixels) - 10,338
+        # pixels = (6,3933* mm) - 10,338
 
-        # a*milimeters + b = pixels
-        a = 7
-        b = 12
+        # pixels = a*milimeters + b
+        a = 6.3933
+        b = -10.338
         hoek = 12
         platform_pixel_y_waarde = 800
 
         # Wat is dit? @Herman
+            # Dit is het aantal pixels dat de foto hoog is. Full HD foto, dus 1920 x 1080.
+            # Wordt gebruikt bij de hoogte berekening.
         verticale_resolutie = 1080
 
         sinus_hoek = np.sin(np.deg2rad(hoek))
