@@ -1,37 +1,5 @@
 import numpy as np
 
-# deze functie maakt een ply bestand van drie lists met punten.
-
-def CalculateXYZ(self):
-
-	X1=[]
-	Y1=[]
-	Z1=[]
-	
-	for i in range(0,73): 
-		
-		path = '..\\sphereCoords\\list' + str(i) + '.txt'
-		data_array = np.loadtxt(fname=path)
-
-		# Convert spherical coordinates to cartesian format - See https://nl.wikipedia.org/wiki/Bolco%C3%B6rdinaten
-		# And https://keisan.casio.com/exec/system/1359534351
-		for j in range(0, data_array.shape[0]):
-
-			r = data_array[j][0]
-			theta = data_array[j][1]
-			phi = data_array[j][2]
-
-			insertedX = data_array[j][0] * np.sin(data_array[j][2]) * np.cos(data_array[j][1])
-			insertedY = data_array[j][0] * np.sin(data_array[j][2]) * np.sin(data_array[j][1])
-			insertedZ = data_array[j][0] * np.cos(data_array[j][2])
-
-			X1.append(insertedX) 
-			Y1.append(insertedY) 
-			Z1.append(insertedZ) 
-	
-	ConvertToPly(X1,Y1,Z1)
-
-
 def ConvertToPly(x, y, z):
 	# A file will be made to store the pointcloud
 	file = open("pointCloud.ply", "w+")
@@ -60,5 +28,4 @@ def ConvertToPly(x, y, z):
 		file.write(str(y[i])+" ")
 		file.write(str(z[i])+"\n")
 	file.close()
-
-CalculateXYZ(0)
+	print("Pointcloud has been made!")
