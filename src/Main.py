@@ -3,9 +3,9 @@ from Intergration import Intergration
 from Motor import Motor
 
 def main():
-    # MotorObject = Motor()
+    MotorObject = Motor()
     
-    Coordinates.calculateCoordinates()
+    #Coordinates.calculateCoordinates()
     
     # Temp = Intergration()
     # Intergration.ReadFile(Temp)

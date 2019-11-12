@@ -3,7 +3,7 @@ import cv2
 
 class Filter:
     def colorDetection(self, m):
-        image = cv2.imread('../Fotos/test' + str(m) + '.jpg')
+        image = cv2.imread('../Fotos/temp' + str(m) + '.jpg')
         
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
          
@@ -14,6 +14,6 @@ class Filter:
 
         cv2.imwrite('../FotosHSV/filter' +str(m)+'.jpg', mask)
 
-    for i in range(73):
-        print("Masking photo " + str(i))
-        colorDetection(0,i)
+    #for i in range(73):
+        #print("Masking photo " + str(i))
+        #colorDetection(0,i)
