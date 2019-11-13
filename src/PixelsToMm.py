@@ -34,7 +34,7 @@ class PixelsToMm:
                 pixel_hoogte = verticale_resolutie - (y_waarde - platform_pixel_y_waarde)
                 pixel_breedte = data_array[j][1]
 
-                if y_waarde < 800 and pixel_breedte < 205:
+                if y_waarde < 800 and pixel_breedte < 250:
 
                     mm_hoogte = ((pixel_hoogte - b) / a)
                     mm_breedte = ((pixel_breedte - b) / a)

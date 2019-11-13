@@ -52,9 +52,8 @@ class Intergration(): #a class is defined
 			
 				self.Radius.append(R) #append the values of the Radius in self.Radius
 				self.theta.append(th) #append the values oh theta in self.theta
-			
 		for k in range(0,73):
-			self.phi.append((0.1308)*k) #formula for appending the value of phi in the value of the coordinates of a particular frame
+			self.phi.append(np.deg2rad(4.86*k)) #formula for appending the value of phi in the value of the coordinates of a particular frame
 
 	def CalculateXYZ(self): #function for calculation of X,Y,Z from R,theta,phi
 		finalR=[]
