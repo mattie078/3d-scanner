@@ -40,9 +40,14 @@ class Coordinates:
                 # val.real returns array with values instead of an dataframe
                 val_np = np.array(val.real)
                 if val_np.size != 0:
-
-                    length = val_np.max(axis=0)-val_np.min(axis=0)
-                    avg_list.append([non_duplicated_yVal, length])
+                    # alleen waardes aan de linkerkant van de laser in het midden moeten meegenomen worden.
+                    # Als een x-waarde hoger is dan die van de middenlijn betekent dit dat de laser op deze y-waarde
+                    # achter het middelpunt van het draaivlak schijnt en er dus geen voorwerp tussen staat op die
+                    # hoogte, oftewel: het voorwerp bevindt zich onder deze y-waarde en deze punten moeten dus
+                    # genegeerd worden. (zie Documenten/xyCalcsAfbeelding1.png)
+                    if val_np.max(axis=0) < 1120:
+                        length = val_np.max(axis=0)-val_np.min(axis=0)
+                        avg_list.append([non_duplicated_yVal, length])
 
             print("Finished calc:"+str(i))
             np.savetxt('..\\calcs\\tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
