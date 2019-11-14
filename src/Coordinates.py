@@ -7,6 +7,7 @@ import time
 class Coordinates:
 
     def calculate_coordinates(self):
+        platform_pixel_y_waarde = 570
         for i in range(73):
             # Pakt de fotos die net zijn gemaakt
             path = "..\\FotosHSV\\filter" + str(i) + ".jpg"
@@ -30,6 +31,8 @@ class Coordinates:
             # Prepares iterator to be the amount of unique Y values to optimize runtime 
             df2 = df["yVal"]
             df2 = df2.drop_duplicates()
+            # negeert y-waardes onder het platform
+            df2 = df2[(df2 < platform_pixel_y_waarde).all(axis=1)]
             
             # This code gets all Y values from specific X value (X values are still in array type)
             avg_list = []
