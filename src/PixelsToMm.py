@@ -13,11 +13,11 @@ class PixelsToMm:
         a = 6.3933
         b = -10.338
         hoek = 12
-        platform_pixel_y_waarde = 800
+        platform_pixel_y_waarde = 570
 
         # Wat is dit? @Herman
             # Dit is het aantal pixels dat de foto hoog is. Full HD foto, dus 1920 x 1080.
-            # Wordt gebruikt bij de hoogte berekening.
+                #nb: wordt niet meer gebruikt
         verticale_resolutie = 1080
 
         sinus_hoek = np.sin(np.deg2rad(hoek))
@@ -31,7 +31,8 @@ class PixelsToMm:
             end_array = []
             for j in range(0, data_array.shape[0]):
                 y_waarde = data_array[j][0]
-                pixel_hoogte = verticale_resolutie - (y_waarde - platform_pixel_y_waarde)
+                # pixel_hoogte ging eerst fout, dit is hoe het zou moeten. (zie xyCalcsAfbeelding2.png)
+                pixel_hoogte = platform_pixel_y_waarde - y_waarde
                 pixel_breedte = data_array[j][1]
 
                 if y_waarde < 800 and pixel_breedte < 250:
