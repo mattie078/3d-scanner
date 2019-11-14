@@ -13,7 +13,7 @@ class PixelsToMm:
         a = 6.3933
         b = -10.338
         hoek = 12
-        platform_pixel_y_waarde = 570
+        platform_pixel_y_waarde = 570   # opgemeten uit de verschillende foto's die we genomen hebben. Zat marge op.
 
         # Wat is dit? @Herman
             # Dit is het aantal pixels dat de foto hoog is. Full HD foto, dus 1920 x 1080.
@@ -35,7 +35,7 @@ class PixelsToMm:
                 pixel_hoogte = platform_pixel_y_waarde - y_waarde
                 pixel_breedte = data_array[j][1]
 
-                if y_waarde < 800 and pixel_breedte < 250:
+                if pixel_breedte < 250: # groot schepnet tegen ruis
 
                     mm_hoogte = ((pixel_hoogte - b) / a)
                     mm_breedte = ((pixel_breedte - b) / a)

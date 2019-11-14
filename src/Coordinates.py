@@ -48,7 +48,7 @@ class Coordinates:
                     # achter het middelpunt van het draaivlak schijnt en er dus geen voorwerp tussen staat op die
                     # hoogte, oftewel: het voorwerp bevindt zich onder deze y-waarde en deze punten moeten dus
                     # genegeerd worden. (zie Documenten/xyCalcsAfbeelding1.png)
-                    if val_np.max(axis=0) < 1120:
+                    if val_np.max(axis=0) < 1120:  # opgemeten uit foto's. kan accurater als de laser recht hangt.
                         length = val_np.max(axis=0)-val_np.min(axis=0)
                         avg_list.append([non_duplicated_yVal, length])
 
