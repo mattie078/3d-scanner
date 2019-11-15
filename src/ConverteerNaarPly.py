@@ -2,7 +2,7 @@ import numpy as np
 
 def ConverteerNaarPly(xyz):
 	# A file will be made to store the pointcloud
-	file = open("pointCloud.ply", "w+")
+	file = open("pointCloudTest.ply", "w+")
 
 	# Store the standard header in an array
 	header = []
@@ -10,7 +10,7 @@ def ConverteerNaarPly(xyz):
 		header.append("0")
 	header[0] = "ply"
 	header[1] = "format ascii 1.0"
-	header[2] = "element vertex " + str(len(x))
+	header[2] = "element vertex " + str(len(xyz))
 	header[3] = "property float32 x"
 	header[4] = "property float32 y"
 	header[5] = "property float32 z"

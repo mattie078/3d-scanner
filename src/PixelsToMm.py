@@ -15,12 +15,6 @@ class PixelsToMm:
         hoek = 12
         platform_pixel_y_waarde = 570   # opgemeten uit de verschillende foto's die we genomen hebben. Zat marge op.
 
-        # Wat is dit? @Herman
-            # Dit is het aantal pixels dat de foto hoog is. Full HD foto, dus 1920 x 1080.
-                #nb: wordt niet meer gebruikt
-        verticale_resolutie = 1080
-
-        sinus_hoek = np.sin(np.deg2rad(hoek))
         for i in range(73):
             # Pakt de lijnbreedtes per y-coordinaat die net zijn berekend
             path = '..\\calcs\\tempCalc'+str(i)+'.txt'
@@ -41,14 +35,6 @@ class PixelsToMm:
                     mm_breedte = ((pixel_breedte - b) / a)
 
                     end_array.append([mm_breedte, mm_hoogte])
-
-                # mm_afstand = mm_breedte/sinus_hoek
-                # r = np.square(mm_hoogte)+np.square(mm_afstand)
-                # theta = np.rad2deg(np.arctan(mm_hoogte/mm_afstand))
-                # phi = hoek + i * (360/73)
-                # end_array[j] = [r, theta, phi]
-            # print("Finished sphereCoords:"+str(i))
-            # np.savetxt('..\\sphereCoords\\list' + str(i) + '.txt', end_array, fmt='%f')
 
             print("Finished xycoordinates:"+str(i))
             np.savetxt('..\\xycoordinates\\list' + str(i) + '.txt', end_array, fmt='%f')

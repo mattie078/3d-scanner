@@ -1,4 +1,4 @@
-from ConvertToPly import ConvertToPly
+from ConverteerNaarPly import ConverteerNaarPly
 import math
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
@@ -9,12 +9,9 @@ import os
 
 
 class Integratie:
-	
-	def __init__(self):
-		self.RadiusThetaPhi = []  # waarom moeilijk doen als het ook makkelijk kan
-		self.XYZ = []
 
 	def ReadFile(self):
+		RadiusThetaPhi = []
 		hoek = 12
 		sinus_hoek = np.sin(np.deg2rad(hoek))
 
@@ -26,23 +23,19 @@ class Integratie:
 			for j in range(len(data_array)-1):
 				radius = math.sqrt(float(data_array[j][1]/sinus_hoek)**2+float(data_array[j][0])**2)
 				theta = np.arctan(float(data_array[j][0])/float(data_array[j][1]))
-				self.RadiusThetaPhi.append([radius, theta, phi])
+				RadiusThetaPhi.append([radius, theta, phi])
 
-	def CalculateXYZ(self): #function for calculation of X,Y,Z from R,theta,phi
+		XYZ = []
 
-		rthetaphi = self.RadiusThetaPhi
-		for i in range(len(rthetaphi)):
-			r = rthetaphi[i][0]
-			theta = rthetaphi[i][1]
-			phi = rthetaphi[i][2]
+		for i in range(len(RadiusThetaPhi)):
+			r = RadiusThetaPhi[i][0]
+			theta = RadiusThetaPhi[i][1]
+			phi = RadiusThetaPhi[i][2]
 			xVal = r * np.sin(theta) * np.cos(phi)
 			yVal = r * np.sin(theta) * np.sin(phi)
 			zVal = r * np.cos(theta)
-		self.XYZ.append([xVal, yVal, zVal])
+			XYZ.append([xVal, yVal, zVal])
 		
-		ConverteerNaarPly(self.XYZ)
+		ConverteerNaarPly(XYZ)
 
-
-this = Intergratie
-this.ReadFile()
-this.CalculateXYZ()
+	ReadFile(0)
