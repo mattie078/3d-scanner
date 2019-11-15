@@ -28,19 +28,19 @@ class Coordinates:
 
             df = pd.DataFrame(zipped_list, columns={'yVal', 'xVal'})
 
-            # Prepares iterator to be the amount of unique Y values to optimize runtime 
+            # Haalt alle unieke Y waardes uit de dataframe en slaat ze op in een nieuwe 
             df2 = df["yVal"]
             df2 = df2.drop_duplicates()
             # negeert y-waardes onder het platform
             df2 = df2[(df2 < platform_pixel_y_waarde)]
             
-            # This code gets all Y values from specific X value (X values are still in array type)
+            # Deze loop haalt alle X waardes uit de dataframe die bij een bepaalde Y waarde hoort (X type = dataframe)
             avg_list = []
 
             for index_old, non_duplicated_yVal in df2.iteritems():
                 val = df.loc[df["yVal"] == non_duplicated_yVal, "xVal"]
 
-                # val.real returns array with values instead of an dataframe
+                # val.real returned 'normale' array inplaats van een dataframe (voor makkelijkere verwerking)
                 val_np = np.array(val.real)
                 if val_np.size != 0:
                     # alleen waardes aan de linkerkant van de laser in het midden moeten meegenomen worden.
@@ -53,6 +53,4 @@ class Coordinates:
                         avg_list.append([non_duplicated_yVal, length])
 
             print("Finished calc:"+str(i))
-            np.savetxt('..\\calcs\\tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
-
-    calculate_coordinates(0)
+            np.savetxt('..\\temps\\calcs\\tempCalc' + str(i) + '.txt', avg_list, fmt='%d')

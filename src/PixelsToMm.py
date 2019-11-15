@@ -17,7 +17,7 @@ class PixelsToMm:
 
         for i in range(73):
             # Pakt de lijnbreedtes per y-coordinaat die net zijn berekend
-            path = '..\\calcs\\tempCalc'+str(i)+'.txt'
+            path = '..\\temps\\calcs\\tempCalc'+str(i)+'.txt'
             data_array = np.loadtxt(fname=path, dtype='int')
 
             # Meer comments pls
@@ -37,6 +37,4 @@ class PixelsToMm:
                     end_array.append([mm_breedte, mm_hoogte])
 
             print("Finished xycoordinates:"+str(i))
-            np.savetxt('..\\xycoordinates\\list' + str(i) + '.txt', end_array, fmt='%f')
-
-    calculate_real_distances(0)
+            np.savetxt('..\\temps\\xycoordinates\\tempXY' + str(i) + '.txt', end_array, fmt='%f')

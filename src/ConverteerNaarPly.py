@@ -2,7 +2,7 @@ import numpy as np
 
 def ConverteerNaarPly(xyz):
 	# A file will be made to store the pointcloud
-	file = open("pointCloudTest.ply", "w+")
+	file = open("..\\temps\\pointCloudTest.ply", "w+")
 
 	# Store the standard header in an array
 	header = []

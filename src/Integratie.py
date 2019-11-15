@@ -16,7 +16,7 @@ class Integratie:
 		sinus_hoek = np.sin(np.deg2rad(hoek))
 
 		for i in range(0, 73):
-			path = '..\\xycoordinates\\list' + str(i) + '.txt'
+			path = '..\\temps\\xycoordinates\\tempXY' + str(i) + '.txt'
 			data_array = np.loadtxt(fname=path)
 			phi = (360./73.)*i
 
@@ -37,5 +37,3 @@ class Integratie:
 			XYZ.append([xVal, yVal, zVal])
 		
 		ConverteerNaarPly(XYZ)
-
-	ReadFile(0)
