@@ -8,7 +8,7 @@ import time
 def main():
     #MotorObject = Motor()
     
-    Coordinates.calculate_coordinates(0)
+    #Coordinates.calculate_coordinates(0)
     PixelsToMm.calculate_real_distances(0)
     Integratie.ReadFile(0)
 
