@@ -1,10 +1,10 @@
 import numpy as np
 
 def ConverteerNaarPly(xyz):
-	# A file will be made to store the pointcloud
+	# Een bestand wordt gemaakt om de pointCloud in op te slaan
 	file = open("..\\temps\\pointCloudTest.ply", "w+")
 
-	# Store the standard header in an array
+	# Pointclouds hebben een standaard header (http://people.math.sc.edu/Burkardt/data/ply/ply.txt)
 	header = []
 	for i in range(9):
 		header.append("0")
@@ -18,11 +18,11 @@ def ConverteerNaarPly(xyz):
 	header[7] = "property list uint8 int32 vertex_indices"
 	header[8] = "end_header"
 
-	# Adds the header to the file
+	# Voegt de header toe aan het bestand
 	for i in range(len(header)):
 		file.write(header[i]+"\n")
 
-	# Adds the coordinates to the Pointcloud file
+	# Voegt de coordinaten toe aan het bestand
 	for i in range(len(xyz)):
 		file.write(str(xyz[i][0])+" ")
 		file.write(str(xyz[i][1])+" ")

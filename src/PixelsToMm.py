@@ -6,7 +6,7 @@ import pandas as pd
 class PixelsToMm:
 
     def calculate_real_distances(self):
-        # Formula from calibration: 
+        # Formule van de kalibratie: 
         # pixels = (6,3933* mm) - 10,338
 
         # pixels = a*milimeters + b
@@ -20,9 +20,8 @@ class PixelsToMm:
             path = '..\\temps\\calcs\\tempCalc'+str(i)+'.txt'
             data_array = np.loadtxt(fname=path, dtype='int')
 
-            # Meer comments pls
-            
             end_array = []
+            # De actuele milimeters voor elke waarde in tempCalc berekenen
             for j in range(0, data_array.shape[0]):
                 y_waarde = data_array[j][0]
                 # pixel_hoogte ging eerst fout, dit is hoe het zou moeten. (zie xyCalcsAfbeelding2.png)
