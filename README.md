@@ -1,18 +1,5 @@
 # Project 3D scanner 
 
-Dit project maakt gebruik van [Laser Triangulation]
+Dit project maakt gebruik van [Laser Triangulation](https://en.wikipedia.org/wiki/3D_scanning#Triangulation) om objecten te kunnen scannen. 
+Tijdens het scannen wordt er achter de schermen berekeningen gedaan tussen de rode lijnen. Hiermee krijgen we allemaal coördinaten die we bij elkaar stoppen. Dit heet een [PointCloud](https://en.wikipedia.org/wiki/Point_cloud). Deze PointCloud zetten we vervolgens om in een .stl bestand die je kan gebruiken in een 3D Printer om hetzelfde object te printen.  
 
-[//]: 
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
-   [node.js]: <http://nodejs.org>
-   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
-   [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
-   [AngularJS]: <http://angularjs.org>
-   [Laser Triangulation]: <https://en.wikipedia.org/wiki/3D_scanning#Triangulation>
