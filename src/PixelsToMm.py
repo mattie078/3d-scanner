@@ -17,21 +17,21 @@ class PixelsToMm:
                                         # NIET MEER NODIG
         # Pakt de lijnbreedtes per y-coordinaat die net zijn berekend
         data_array = np.array(tempList, dtype='int')
-
         end_array = []
         # De actuele milimeters voor elke waarde in tempCalc berekenen
         for j in range(0, data_array.shape[0]):
+            # print(data_array[j][0])
             y_waarde = data_array[j][0]
             # pixel_hoogte ging eerst fout, dit is hoe het zou moeten. (zie xyCalcsAfbeelding2.png)
             pixel_hoogte = y_waarde
             pixel_breedte = data_array[j][1]
 
-            if pixel_breedte < 250: # groot schepnet tegen ruis
+            # if pixel_breedte < 250: # groot schepnet tegen ruis
 
-                mm_hoogte = ((pixel_hoogte - b) / a)
-                mm_breedte = ((pixel_breedte - b) / a)
+            mm_hoogte = ((pixel_hoogte - b) / a)
+            mm_breedte = ((pixel_breedte - b) / a)
 
-                end_array.append([mm_breedte, mm_hoogte])
+            end_array.append([mm_breedte, mm_hoogte])
 
         print("Finished xycoordinates:"+str(i))
         np.savetxt('..\\temps\\xycoordinates\\tempXY' + str(i) + '.txt', end_array, fmt='%f')
