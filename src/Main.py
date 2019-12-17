@@ -13,7 +13,8 @@ ledPin = 12
 
 def main():
     #MotorObject = Motor()
-
+    #waitForInput()
+    
     for i in range(73): # alleen voor debugging
         #Motor.turnMotor(MotorObject, i)
         Coordinates.calculate_coordinates(0, i)
