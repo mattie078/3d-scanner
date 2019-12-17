@@ -28,11 +28,11 @@ class Motor:
 
         # Maakt 73 fotos (0 tot 72) en slaat deze op met de juiste benaming
         # Zet de filter op de foto
-        for m in range(73):
-            fotonaam = 'temp' + str(m) + ".jpg"
+        def turnMotor(self, i):
+            fotonaam = 'temp' + str(i) + ".jpg"
             camera.capture('/home/pi/Desktop/3d-scanner/Fotos/'+fotonaam)
             print(fotonaam)
-            filterImage.colorDetection(m)
+            filterImage.colorDetection(i)
             for i in range(7):
                 for halfstep in range(9):
                     for pin in range(4):
