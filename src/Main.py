@@ -16,6 +16,10 @@ def main():
     #waitForInput()
     
     for i in range(73): # alleen voor debugging
+
+        if GPIO.input(buttonPin) == GPIO.HIGH:  # Force stop 
+            break
+
         #Motor.turnMotor(MotorObject, i)
         Coordinates.calculate_coordinates(0, i)
 
