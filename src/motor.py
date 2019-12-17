@@ -4,7 +4,6 @@ import time
 from datetime import datetime
 from Filter import Filter
 
-
 class Motor:
     try:
         # Opent de camera om een foto te maken

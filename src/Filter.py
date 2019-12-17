@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-from Coordinates import Coordinates
 
 
 class Filter:
@@ -17,7 +16,6 @@ class Filter:
         mask = cv2.inRange(hsv, lower_red, upper_red)
 
         cv2.imwrite('../FotosHSV/filter' +str(m)+'.jpg', mask)
-        Coordinates.calculate_coordinates(0, m)    # linkt nu direct door.
 
     # for i in range(73):
     #     print("Masking photo " + str(i))
