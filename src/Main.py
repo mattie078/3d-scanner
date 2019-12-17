@@ -13,16 +13,6 @@ ledPin = 12
 
 def main():
     #MotorObject = Motor()
-    
-    Coordinates.calculate_coordinates(0)
-    PixelsToMm.calculate_real_distances(0)
-    Integratie.ReadFile(0)
-
-if __name__ == "__main__":
-    start_time = time.clock()
-    main()
-    print("--- %s seconds ---" % (time.clock() - start_time)) 
-    #waitForInput()
 
     for i in range(73): # alleen voor debugging
         #Motor.turnMotor(MotorObject, i)
