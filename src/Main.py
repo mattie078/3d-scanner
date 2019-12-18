@@ -8,6 +8,15 @@ import cv2
 buttonPin = 10
 ledPin = 12
 
+def waitForInput():
+    GPIO.output(ledPin, GPIO.HIGH) #GROEN
+    print("Waiting on initial input...")
+    while True:
+        if GPIO.input(buttonPin) == GPIO.HIGH:
+            print("Ingedrukt!")
+            GPIO.output(ledPin, GPIO.HIGH) #ROOD
+            break   # Knop is ingedrukt
+
 def main():
     #MotorObject = Motor()
     waitForInput()
@@ -33,11 +42,4 @@ if __name__ == "__main__":
 
     main()
 
-def waitForInput():
-    GPIO.output(ledPin, GPIO.HIGH) #GROEN
-    print("Waiting on initial input...")
-    while True:
-        if GPIO.input(buttonPin) == GPIO.HIGH:
-            print("Ingedrukt!")
-            GPIO.output(ledPin, GPIO.HIGH) #ROOD
-            break   # Knop is ingedrukt
+
