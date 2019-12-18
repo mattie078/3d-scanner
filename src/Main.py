@@ -12,9 +12,9 @@ pinBlauw = 38
 pinGroen = 40
 
 def rood():
-    roodwaarde = (255 * 100) / 255
+    roodwaarde = (0 * 100) / 255
     groenwaarde = (0 * 100) / 255
-    blauwwaarde = (0 * 100) / 255
+    blauwwaarde = (255 * 100) / 255
  
     ROOD.ChangeDutyCycle(roodwaarde)
     GROEN.ChangeDutyCycle(groenwaarde)
@@ -58,6 +58,7 @@ def main():
 
 if __name__ == "__main__":
 
+    GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
