@@ -13,7 +13,7 @@ ledPin = 12
 
 def main():
     #MotorObject = Motor()
-    #waitForInput()
+    waitForInput()
     
     for i in range(73): # alleen voor debugging
 
@@ -21,14 +21,14 @@ def main():
             break
 
         #Motor.turnMotor(MotorObject, i)
-        Coordinates.calculate_coordinates(0, i)
+        #Coordinates.calculate_coordinates(0, i)
 
-    Integratie.ReadFile(0)
+    #Integratie.ReadFile(0)
 
 if __name__ == "__main__":
 
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(ledPin, GPIO.OUT, initial=GPIO.LOW)
 
     start_time = time.perf_counter()    # .clock() mag niet meer gebruikt te worden sinds Python3.3. dit doet hetzelfde.
@@ -37,6 +37,7 @@ if __name__ == "__main__":
 
 def waitForInput():
     GPIO.output(ledPin, GPIO.HIGH) #GROEN
+    print("Waiting on initial input...")
     while True:
         if GPIO.input(buttonPin) == GPIO.HIGH:
             GPIO.output(ledPin, GPIO.HIGH) #ROOD
