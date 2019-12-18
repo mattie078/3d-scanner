@@ -34,7 +34,7 @@ class Integratie:
 				theta = np.arctan(float(data_array[j][0])/float(data_array[j][1]))
 				# RadiusThetaPhi.append([radius, theta, phi])
 
-			# Hierna worden de bolcoördinaten omgezet naar XYZ-coördinaten
+			# Hierna worden de bolcoördinaten omgezet naar XYZ-coordinaten
 				xVal = radius * np.sin(theta) * np.cos(phi)
 				yVal = radius * np.sin(theta) * np.sin(phi)
 				zVal = radius * np.cos(theta)
