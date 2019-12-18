@@ -8,8 +8,8 @@ import time
 
 buttonPin = 10
 
-pinRood = 40
-pinBlauw = 36
+pinRood = 36
+pinBlauw = 40
 pinGroen = 38
 
 def rood():
