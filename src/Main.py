@@ -38,7 +38,6 @@ def waitForInput():
         if GPIO.input(buttonPin) == GPIO.LOW:
             #print("Knop is ingedrukt!")
             rood()
-            time.sleep(4)
             break   # Knop is ingedrukt
 
 def main():
@@ -51,8 +50,9 @@ def main():
     for i in range(73): # alleen voor debugging
 
         if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop 
+            print("Force stopping!")
             break
-
+        time.sleep(2)
         #Motor.turnMotor(MotorObject, i)
         #Coordinates.calculate_coordinates(0, i)
 
