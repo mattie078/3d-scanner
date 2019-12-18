@@ -8,9 +8,9 @@ import time
 
 buttonPin = 10
 
-pinRood = 36
+pinRood = 40
 pinBlauw = 38
-pinGroen = 40
+pinGroen = 36
 
 def rood():
     roodwaarde = (0 * 100) / 255
