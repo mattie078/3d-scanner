@@ -26,7 +26,7 @@ def main():
         #Motor.turnMotor(MotorObject, i)
         #Coordinates.calculate_coordinates(0, i)
 
-    Integratie.ReadFile(0)
+    #Integratie.ReadFile(0)
 
 if __name__ == "__main__":
 
