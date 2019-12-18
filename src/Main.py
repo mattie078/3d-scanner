@@ -12,7 +12,7 @@ def waitForInput():
     GPIO.output(ledPin, GPIO.HIGH) #GROEN
     print("Waiting on initial input...")
     while True:
-        if GPIO.input(buttonPin) == GPIO.HIGH:
+        if GPIO.input(buttonPin) == GPIO.LOW:
             print("Ingedrukt!")
             GPIO.output(ledPin, GPIO.HIGH) #ROOD
             break   # Knop is ingedrukt
@@ -26,7 +26,7 @@ def main():
     
     for i in range(73): # alleen voor debugging
 
-        if GPIO.input(buttonPin) == GPIO.HIGH:  # Force stop 
+        if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop 
             break
 
         #Motor.turnMotor(MotorObject, i)
