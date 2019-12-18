@@ -20,8 +20,6 @@ class Integratie:
 			path = '..\\temps\\xycoordinates\\tempXY' + str(i) + '.txt'
 			data_array = np.loadtxt(fname=path)
 			phi = (360./73.)*i
-
-
 			# Hier wordt de afstand tussen de lasers op elke hoogte omgezet in een bolcoördinaat.
 			# De radius is de afstand tussen het middelpunt (van het draaiplateau) en het snijpunt met de linker laser.
 			# Dit wordt berekend met de stelling van Pythagoras:
