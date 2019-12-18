@@ -45,13 +45,15 @@ def main():
     waitForInput()
 
     print("Starting")
+    time.sleep(3)
 
-    
     for i in range(73): # alleen voor debugging
 
         if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop 
             print("Force stopping!")
             break
+
+	print(str(i))
         time.sleep(2)
         #Motor.turnMotor(MotorObject, i)
         #Coordinates.calculate_coordinates(0, i)
