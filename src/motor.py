@@ -5,43 +5,43 @@ from datetime import datetime
 from Filter import Filter
 
 class Motor:
-    try:
-        # Opent de camera om een foto te maken
-        camera = PiCamera()
-        GPIO.setmode(GPIO.BCM)
-        ControlPin = [6,13,19,26]
-        filterImage = Filter()
-        for pin in ControlPin:
-            GPIO.setup(pin,GPIO.OUT)
-            GPIO.output(pin,0)
 
-        # Sequence om de motor juist te laten draaien
-        seq = [[1,0,0,0],
-               [1,1,0,0],
-               [0,1,0,0],
-               [0,1,1,0],
-               [0,0,1,0],
-               [0,0,1,1],
-               [0,0,0,1],
-               [1,0,0,1],
-               [1,0,0,0]]
+    def __init__(self): 
+        try:
+            # Opent de camera om een foto te maken
+            camera = PiCamera()
+            GPIO.setmode(GPIO.BCM)
+            ControlPin = [6,13,19,26]
+            filterImage = Filter()
+            for pin in ControlPin:
+                GPIO.setup(pin,GPIO.OUT)
+                GPIO.output(pin,0)
 
-        # Maakt 73 fotos (0 tot 72) en slaat deze op met de juiste benaming
-        # Zet de filter op de foto
-        def turnMotor(self, i):
-            fotonaam = 'temp' + str(i) + ".jpg"
-            camera.capture('/home/pi/Desktop/3d-scanner/Fotos/'+fotonaam)
-            print(fotonaam)
-            filterImage.colorDetection(i)
-            for i in range(7):
-                for halfstep in range(9):
-                    for pin in range(4):
-                        GPIO.output(ControlPin[pin], seq[halfstep][pin])
-                        time.sleep(0.001)
-            time.sleep(1)
+            # Sequence om de motor juist te laten draaien
+            seq = [[1,0,0,0],
+                [1,1,0,0],
+                [0,1,0,0],
+                [0,1,1,0],
+                [0,0,1,0],
+                [0,0,1,1],
+                [0,0,0,1],
+                [1,0,0,1],
+                [1,0,0,0]]
+
+            # Maakt 73 fotos (0 tot 72) en slaat deze op met de juiste benaming
+            # Zet de filter op de foto
+    def turnMotor(self, i):
+        fotonaam = 'temp' + str(i) + ".jpg"
+        camera.capture('/home/pi/Desktop/3d-scanner/Fotos/'+fotonaam)
+        print(fotonaam)
+        filterImage.colorDetection(i)
+        for i in range(7):
+            for halfstep in range(9):
+                for pin in range(4):
+                    GPIO.output(ControlPin[pin], seq[halfstep][pin])
+                    time.sleep(0.001)
+        time.sleep(1)
                     
     #except:
     #    print('mislukt')
         
-    finally:
-        GPIO.cleanup()

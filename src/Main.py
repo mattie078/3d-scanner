@@ -1,7 +1,7 @@
 from Coordinates import Coordinates
 from PixelsToMm import PixelsToMm
 from Integratie import Integratie
-import Motor
+from Motor import Motor
 import RPi.GPIO as GPIO
 import cv2
 import time
