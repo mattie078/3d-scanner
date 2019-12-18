@@ -4,6 +4,7 @@ from Integratie import Integratie
 #from Motor import Motor
 import RPi.GPIO as GPIO
 import cv2
+import time
 
 buttonPin = 10
 
@@ -37,6 +38,7 @@ def waitForInput():
         if GPIO.input(buttonPin) == GPIO.LOW:
             #print("Knop is ingedrukt!")
             rood()
+            time.sleep(4)
             break   # Knop is ingedrukt
 
 def main():
