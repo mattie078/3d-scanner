@@ -11,13 +11,32 @@ pinRood = 36
 pinBlauw = 38
 pinGroen = 40
 
+def rood():
+    roodwaarde = (255 * 100) / 255
+    groenwaarde = (0 * 100) / 255
+    blauwwaarde = (0 * 100) / 255
+ 
+    ROOD.ChangeDutyCycle(roodwaarde)
+    GROEN.ChangeDutyCycle(groenwaarde)
+    BLAUW.ChangeDutyCycle(blauwwaarde)
+
+def groen():
+
+    roodwaarde = (0 * 100) / 255
+    groenwaarde = (255 * 100) / 255
+    blauwwaarde = (0 * 100) / 255
+ 
+    ROOD.ChangeDutyCycle(roodwaarde)
+    GROEN.ChangeDutyCycle(groenwaarde)
+    BLAUW.ChangeDutyCycle(blauwwaarde)
+
 def waitForInput():
-    GPIO.output(ledPin, GPIO.HIGH) #GROEN
+    groen()
     #print("Waiting on initial input...")
     while True:
         if GPIO.input(buttonPin) == GPIO.LOW:
             #print("Knop is ingedrukt!")
-            GPIO.output(ledPin, GPIO.HIGH) #ROOD
+            rood()
             break   # Knop is ingedrukt
 
 def main():
@@ -52,14 +71,6 @@ if __name__ == "__main__":
     ROOD.start(0)
     GROEN.start(0)
     BLAUW.start(0)
-
-    roodwaarde = (255 * 100) / 255
-    groenwaarde = (0 * 100) / 255
-    blauwwaarde = (0 * 100) / 255
- 
-    ROOD.ChangeDutyCycle(roodwaarde)
-    GROEN.ChangeDutyCycle(groenwaarde)
-    BLAUW.ChangeDutyCycle(blauwwaarde)
 
     main()
 
