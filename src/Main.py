@@ -4,7 +4,6 @@ from Integratie import Integratie
 #from Motor import Motor
 import RPi.GPIO as GPIO
 import cv2
-import time
 
 buttonPin = 10
 ledPin = 12
@@ -32,9 +31,7 @@ if __name__ == "__main__":
     GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(ledPin, GPIO.OUT, initial=GPIO.LOW)
 
-    start_time = time.perf_counter()    # .clock() mag niet meer gebruikt te worden sinds Python3.3. dit doet hetzelfde.
     main()
-    print("--- %s seconds ---" % (time.perf_counter() - start_time))
 
 def waitForInput():
     GPIO.output(ledPin, GPIO.HIGH) #GROEN
