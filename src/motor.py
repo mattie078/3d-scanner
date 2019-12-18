@@ -5,7 +5,7 @@ from datetime import datetime
 from Filter import Filter
 
 class Motor:
-
+    
     def __init__(self): 
         try:
             # Opent de camera om een foto te maken
