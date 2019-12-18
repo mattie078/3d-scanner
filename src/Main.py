@@ -1,15 +1,13 @@
 from Coordinates import Coordinates
 from PixelsToMm import PixelsToMm
 from Integratie import Integratie
-from motor import Motor
+from Motor import Motor
 import RPi.GPIO as GPIO
 import cv2
 import time
 
 buttonPin = 10
 ledPin = 12
-
-#from Motor import Motor
 
 def main():
     #MotorObject = Motor()
