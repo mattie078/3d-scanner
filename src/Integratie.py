@@ -1,3 +1,4 @@
+# coding=utf-8
 from ConverteerNaarPly import ConverteerNaarPly
 import math
 import numpy as np
