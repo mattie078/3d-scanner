@@ -1,7 +1,7 @@
 from Coordinates import Coordinates
 from PixelsToMm import PixelsToMm
 from Integratie import Integratie
-from Motor import Motor
+from motor import Motor
 import RPi.GPIO as GPIO
 import cv2
 import time
@@ -41,9 +41,9 @@ def waitForInput():
             break   # Knop is ingedrukt
 
 def main():
-    MotorObject = Motor()
+    #MotorObject = Motor()
     waitForInput()
-
+    time.sleep(2)
 
     for i in range(73): # alleen voor debugging
 
@@ -51,7 +51,7 @@ def main():
             print("Force stopping!")
             break
 
-        Motor.turnMotor(MotorObject, i)
+        Motor.turnMotor(0, i)
         #Coordinates.calculate_coordinates(0, i)
 
     #Integratie.ReadFile(0)
