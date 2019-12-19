@@ -8,7 +8,7 @@ class Motor:
     
     def __init__(self): 
 
-            # Opent de camera om een foto te maken
+            # Opent de camera om een foto te makenn
             camera = PiCamera()
             GPIO.setmode(GPIO.BCM)
             ControlPin = [6,13,19,26]
