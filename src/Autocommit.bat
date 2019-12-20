@@ -4,4 +4,3 @@ git add .
 git commit -m "Autocommit"
 git push
 
-pause
