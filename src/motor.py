@@ -12,7 +12,7 @@ class Motor:
         self.camera = PiCamera()
         self.ControlPin = [31,33,35,37]
         self.filterImage = Filter()
-        for pin in ControlPin:
+        for pin in self.ControlPin:
             GPIO.setup(pin,GPIO.OUT)
             GPIO.output(pin,0)
 
