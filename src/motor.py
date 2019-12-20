@@ -31,7 +31,7 @@ class Motor:
             # Maakt 73 fotos (0 tot 72) en slaat deze op met de juiste benaming
             # Zet de filter op de foto
 
-    def turnMotor(i):
+    def turnMotor(self,i):
         fotonaam = 'temp' + str(i) + ".jpg"
         camera.capture('/home/pi/Desktop/3d-scanner/Fotos/'+fotonaam)
         print(fotonaam)
