@@ -33,13 +33,13 @@ class Motor:
 
     def turnMotor(self,i):
         fotonaam = 'temp' + str(i) + ".jpg"
-        camera.capture('/home/pi/Desktop/3d-scanner/Fotos/'+fotonaam)
+        self.camera.capture('/home/pi/Desktop/3d-scanner/Fotos/'+fotonaam)
         print(fotonaam)
-        filterImage.colorDetection(i)
+        self.filterImage.colorDetection(i)
         for i in range(7):
             for halfstep in range(9):
                 for pin in range(4):
-                    GPIO.output(ControlPin[pin], seq[halfstep][pin])
+                    GPIO.output(self.ControlPin[pin], self.seq[halfstep][pin])
                     time.sleep(0.001)
         time.sleep(1)
 
