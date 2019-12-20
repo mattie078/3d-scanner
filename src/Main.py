@@ -51,10 +51,10 @@ def main():
             print("Force stopping!")
             break
 
-        MotorObject.turnMotor(i)
-        #Coordinates.calculate_coordinates(0, i)
+        #MotorObject.turnMotor(i)
+        Coordinates.calculate_coordinates(i)
 
-    #Integratie.ReadFile(0)
+    Integratie.ReadFile(0)
 
 if __name__ == "__main__":
 
