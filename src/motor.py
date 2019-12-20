@@ -12,9 +12,9 @@ class Motor:
         self.camera = PiCamera()
         self.ControlPin = [31,33,35,37]
         self.filterImage = Filter()
-        # for pin in ControlPin:
-        #     GPIO.setup(pin,GPIO.OUT)
-        #     GPIO.output(pin,0)
+        for pin in ControlPin:
+            GPIO.setup(pin,GPIO.OUT)
+            GPIO.output(pin,0)
 
         # Sequence om de motor juist te laten draaien
         self.seq = [[1,0,0,0],
