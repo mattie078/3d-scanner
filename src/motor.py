@@ -13,9 +13,9 @@ class Motor:
             GPIO.setmode(GPIO.BOARD)
             ControlPin = [6,13,19,26]
             filterImage = Filter()
-            for pin in ControlPin:
-                GPIO.setup(pin,GPIO.OUT)
-                GPIO.output(pin,0)
+            # for pin in ControlPin:
+            #     GPIO.setup(pin,GPIO.OUT)
+            #     GPIO.output(pin,0)
 
             # Sequence om de motor juist te laten draaien
             seq = [[1,0,0,0],
