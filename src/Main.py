@@ -41,7 +41,7 @@ def waitForInput():
             break   # Knop is ingedrukt
 
 def main():
-    #MotorObject = Motor()
+    MotorObject = Motor()
     waitForInput()
     time.sleep(2)
 
@@ -51,7 +51,7 @@ def main():
             print("Force stopping!")
             break
 
-        Motor.turnMotor(0, i)
+        MotorObject.turnMotor(0, i)
         #Coordinates.calculate_coordinates(0, i)
 
     #Integratie.ReadFile(0)
