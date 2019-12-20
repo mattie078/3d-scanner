@@ -10,7 +10,7 @@ class Motor:
 
             # Opent de camera om een foto te makenn
             camera = PiCamera()
-            #GPIO.setmode(GPIO.BCM)
+            GPIO.setmode(GPIO.BOARD)
             ControlPin = [6,13,19,26]
             filterImage = Filter()
             for pin in ControlPin:
