@@ -56,9 +56,9 @@ def main():
 
         #MotorObject.turnMotor(i)
 
-    Coordinates.calculate_coordinates(CoordinatesObject)
+    CoordinatesObject.calculate_coordinates()
 
-    Integratie.ReadFile(IntegratieObject)
+    IntegratieObject.ReadFile()
 
 if __name__ == "__main__":
 
