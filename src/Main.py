@@ -42,6 +42,9 @@ def waitForInput():
 
 def main():
     MotorObject = Motor()
+    CoordinatesObject = Coordinates()
+    IntegratieObject = Integratie()
+
     waitForInput()
     time.sleep(2)
 
@@ -53,9 +56,9 @@ def main():
 
         #MotorObject.turnMotor(i)
 
-    Coordinates.calculate_coordinates()
+    Coordinates.calculate_coordinates(CoordinatesObject)
 
-    Integratie.ReadFile()
+    Integratie.ReadFile(IntegratieObject)
 
 if __name__ == "__main__":
 
