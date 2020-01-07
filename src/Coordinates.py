@@ -67,3 +67,6 @@ class Coordinates:
 
             print("Finished calc:"+str(i))
             np.savetxt('..\\temps\\calcs\\tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
+
+co = Coordinates()
+co.calculate_coordinates()
