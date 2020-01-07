@@ -47,9 +47,9 @@ def main():
 
     for i in range(73): # alleen voor debugging
 
-        if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop 
-            print("Force stopping!")
-            break
+        #if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop 
+            #print("Force stopping!")
+            #break
 
         #MotorObject.turnMotor(i)
         Coordinates.calculate_coordinates(i)
