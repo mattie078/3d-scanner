@@ -10,8 +10,8 @@ class Filter:
         
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
          
-        lower_red = np.array([0, 0, 210])
         upper_red = np.array([255, 255, 255])
+        lower_red = np.array([40, 0, 255])
 
         mask = cv2.inRange(hsv, lower_red, upper_red)
 

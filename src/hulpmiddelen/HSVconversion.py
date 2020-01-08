@@ -1,6 +1,6 @@
-gimpH = 342.5
-gimpS = 93.3
-gimpV = 93.7
+gimpH = 19
+gimpS = 43
+gimpV = 100
 opencvH = gimpH / 2
 opencvS = (gimpS / 100) * 255
 opencvV = (gimpV / 100) * 255
