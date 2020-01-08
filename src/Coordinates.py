@@ -71,6 +71,3 @@ class Coordinates:
         # np.savetxt('..\\temps\\calcs\\tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
         PixelsToMm.calculate_real_distances(0, i, avg_list)   # linkt nu direct door.
         # Bespaart tijd omdat we nu niet meer naar de harde schijf lezen/schrijven, alles blijft in RAM.
-
-co = Coordinates()
-co.calculate_coordinates(1)
