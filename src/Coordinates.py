@@ -8,13 +8,15 @@ import os
 
 class Coordinates:
 
-    def calculate_coordinates(self, i):
+def calculate_coordinates(self, i):
         # De de afstand tussen de bovenkant van de foto en de voorkant van het platform (in pixels)
         # platform_pixel_y_waarde = 570 NIET MEER NODIG
         # Pakt de fotos die net zijn gemaakt
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        path = dir_path + "\\..\\FotosHSV\\filter" + str(i) + ".jpg"
+	dir_path = os.path.dirname(os.path.realpath(__file__))
+	print(dir_path)
+	path = dir_path + "\\..\\FotosHSV\\filter" + str(i) + ".jpg"
         new_image = cv2.imread(path)
+
 
         # Pakt alle coordinaten waarop de foto de punten wit zijn
         indices = np.where(new_image == [255])
