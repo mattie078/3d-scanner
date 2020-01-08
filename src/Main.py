@@ -55,7 +55,7 @@ def main():
             #break
 
         #MotorObject.turnMotor(i)
-        CoordinatesObject.calculate_coordinates()
+        CoordinatesObject.calculate_coordinates(i)
 
     IntegratieObject.ReadFile()
 

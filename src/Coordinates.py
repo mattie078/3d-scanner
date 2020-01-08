@@ -13,7 +13,7 @@ class Coordinates:
         # Pakt de fotos die net zijn gemaakt
         dir_path = os.path.dirname(os.path.realpath(__file__))
         print(dir_path)
-        path = dir_path + "\\..\\FotosHSV\\filter" + str(i) + ".jpg"
+        path = dir_path + "/../FotosHSV/filter" + str(i) + ".jpg"
         new_image = cv2.imread(path)
 
         # Pakt alle coordinaten waarop de foto de punten wit zijn
@@ -69,9 +69,6 @@ class Coordinates:
 
         # print("Finished calc:"+str(i))  # NIET MEER NODIG
         # np.savetxt('..\\temps\\calcs\\tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
-        # PixelsToMm.calculate_real_distances(0, i, avg_list)   # linkt nu direct door.
+        PixelsToMm.calculate_real_distances(0, i, avg_list)   # linkt nu direct door.
         # Bespaart tijd omdat we nu niet meer naar de harde schijf lezen/schrijven, alles blijft in RAM.
 
-
-co = Coordinates()
-co.calculate_coordinates(1)
