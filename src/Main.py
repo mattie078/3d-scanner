@@ -48,15 +48,14 @@ def main():
     waitForInput()
     time.sleep(2)
 
-    #for i in range(73): # alleen voor debugging
+    for i in range(73): # alleen voor debugging
 
         #if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop 
             #print("Force stopping!")
             #break
 
         #MotorObject.turnMotor(i)
-
-    CoordinatesObject.calculate_coordinates()
+        CoordinatesObject.calculate_coordinates()
 
     IntegratieObject.ReadFile()
 
