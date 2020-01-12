@@ -2,6 +2,7 @@ from Coordinates import Coordinates
 from PixelsToMm import PixelsToMm
 from Integratie import Integratie
 from motor import Motor
+from SaveToSD import SaveToSD
 import RPi.GPIO as GPIO
 import cv2
 import time
@@ -12,52 +13,59 @@ pinRood = 36
 pinBlauw = 40
 pinGroen = 38
 
-def rood():
-    roodwaarde = (0 * 100) / 255
-    groenwaarde = (0 * 100) / 255
-    blauwwaarde = (255 * 100) / 255
+def changeColor(color):
+    if color == 'red':
+        roodwaarde = (255 * 100) / 255
+        groenwaarde = (0 * 100) / 255
+        blauwwaarde = (0 * 100) / 255
+        
+        ROOD.ChangeDutyCycle(roodwaarde)
+        GROEN.ChangeDutyCycle(groenwaarde)
+        BLAUW.ChangeDutyCycle(blauwwaarde)
+    
+    elif color == 'green':
+        roodwaarde = (0 * 100) / 255
+        groenwaarde = (255 * 100) / 255
+        blauwwaarde = (0 * 100) / 255
  
-    ROOD.ChangeDutyCycle(roodwaarde)
-    GROEN.ChangeDutyCycle(groenwaarde)
-    BLAUW.ChangeDutyCycle(blauwwaarde)
-
-def groen():
-
-    roodwaarde = (0 * 100) / 255
-    groenwaarde = (255 * 100) / 255
-    blauwwaarde = (0 * 100) / 255
- 
-    ROOD.ChangeDutyCycle(roodwaarde)
-    GROEN.ChangeDutyCycle(groenwaarde)
-    BLAUW.ChangeDutyCycle(blauwwaarde)
+        ROOD.ChangeDutyCycle(roodwaarde)
+        GROEN.ChangeDutyCycle(groenwaarde)
+        BLAUW.ChangeDutyCycle(blauwwaarde)
 
 def waitForInput():
-    groen()
+    changeColor('green')
+    
     #print("Waiting on initial input...")
     while True:
         if GPIO.input(buttonPin) == GPIO.LOW:
             #print("Knop is ingedrukt!")
-            rood()
+            changeColor('red')
             break   # Knop is ingedrukt
 
 def main():
     MotorObject = Motor()
     CoordinatesObject = Coordinates()
     IntegratieObject = Integratie()
+    SaveToSD_Object = SaveToSD()
 
     waitForInput()
     time.sleep(2)
 
     for i in range(73): # alleen voor debugging
 
-        #if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop 
-            #print("Force stopping!")
-            #break
+        if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop 
+            print("Force stopping!")
+            break
 
         #MotorObject.turnMotor(i)
         CoordinatesObject.calculate_coordinates(i)
 
     IntegratieObject.ReadFile()
+    
+    #PointCloud naar STL
+    
+    #Save to USB/SD
+    SaveToSD_Object.save()
 
 if __name__ == "__main__":
 
@@ -65,13 +73,13 @@ if __name__ == "__main__":
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-    GPIO.setup(pinRood, GPIO.OUT)
-    GPIO.setup(pinGroen, GPIO.OUT)
     GPIO.setup(pinBlauw, GPIO.OUT)
+    GPIO.setup(pinGroen, GPIO.OUT)
+    GPIO.setup(pinRood, GPIO.OUT)
 
-    ROOD = GPIO.PWM(pinRood, 1000)
-    GROEN = GPIO.PWM(pinGroen, 1000)
     BLAUW = GPIO.PWM(pinBlauw, 1000)
+    GROEN = GPIO.PWM(pinGroen, 1000)
+    ROOD = GPIO.PWM(pinRood, 1000)
     ROOD.start(0)
     GROEN.start(0)
     BLAUW.start(0)
