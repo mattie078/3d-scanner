@@ -1,7 +1,7 @@
 import numpy as np
-import math as math
+import math
 import os
-from ConverteerNaarPly import ConverteerNaarPly as ConverteerNaarPly
+from ConverteerNaarPly import ConverteerNaarPly
 
 class Calculations:
     angle = 12
@@ -41,7 +41,7 @@ class Calculations:
                 polarangle, radius, motorAngle = self.cartesianToSpherical(hypo_array, x)
                 xcoordinate, ycoordinate, zcoordinate = self.SphericalToCartesian(polarangle, radius, motorAngle)
                 xyzArray.append([xcoordinate, ycoordinate, zcoordinate])
-        #print(xyzArray)        
+        #print(xyzArray)
         ConverteerNaarPly(xyzArray)
         # print(hypo_array)
 

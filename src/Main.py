@@ -44,7 +44,7 @@ def waitForInput():
             break   # Knop is ingedrukt
 
 def main():
-    #MotorObject = Motor()
+    MotorObject = Motor()
     CoordinatesObject = Coordinates()
     IntegratieObject = Integratie()
     CalculationsObject = Calculations()
@@ -59,7 +59,7 @@ def main():
             print("Force stopping!")
             break
 
-        #MotorObject.turnMotor(i)
+        MotorObject.turnMotor(i)
         CoordinatesObject.calculate_coordinates(i)
 
     #IntegratieObject.ReadFile() NIET MEER GEBRUIKEN = OUD

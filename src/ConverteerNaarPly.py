@@ -1,4 +1,5 @@
 import numpy as np
+from ConvertToSTL import MeshlabTask
 
 def ConverteerNaarPly(xyz):
 	# Een bestand wordt gemaakt om de pointCloud in op te slaan
@@ -29,3 +30,5 @@ def ConverteerNaarPly(xyz):
 		file.write(str(xyz[i][2])+"\n")
 	file.close()
 	print("Pointcloud has been made!")
+	StlConverter = MeshlabTask()
+	StlConverter.run()

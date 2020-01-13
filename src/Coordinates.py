@@ -46,7 +46,7 @@ class Coordinates:
         df2 = df["yVal"]
         df2 = df2.drop_duplicates()
         # negeert y-waardes onder het platform
-        #df2 = df2[(df2 < platform_pixel_y_waarde)]    #NIET MEER NODIG
+        df2 = df2[(df2 < platform_pixel_y_waarde)]    #NIET MEER NODIG
 
         # Deze loop haalt alle X waardes uit de dataframe die bij een bepaalde Y waarde hoort (X type = dataframe)
         avg_list = []
@@ -67,8 +67,8 @@ class Coordinates:
                     length = val_np.max(axis=0)-val_np.min(axis=0)
                     avg_list.append([non_duplicated_yVal, length])
 
-        # print("Finished calc:"+str(i))  # NIET MEER NODIG
-        # np.savetxt('..\\temps\\calcs\\tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
+        print("Finished calc:"+str(i))  # NIET MEER NODIG
+        np.savetxt('..\\temps\\calcs\\tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
         PixelsToMmObject = PixelsToMm()
         PixelsToMmObject.calculate_real_distances(i, avg_list)   # linkt nu direct door.
         # Bespaart tijd omdat we nu niet meer naar de harde schijf lezen/schrijven, alles blijft in RAM.
