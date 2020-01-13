@@ -45,5 +45,3 @@ class Calculations:
         ConverteerNaarPly(xyzArray)
         # print(hypo_array)
 
-CalcObj = Calculations()
-CalcObj.run()

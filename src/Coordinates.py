@@ -65,6 +65,7 @@ class Coordinates:
                 if val_np.max(axis=0) < 1000:
                     length = val_np.max(axis=0)-val_np.min(axis=0)
                     if length > 10:  # filtert fouten door ruis uit
+                        print(length)
                         avg_list.append([non_duplicated_yVal, length])
 
         print("Finished calc:"+str(i))  # NIET MEER NODIG

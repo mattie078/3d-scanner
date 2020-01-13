@@ -2,7 +2,7 @@ import os
 
 class MeshlabTask():
 
-    def run():
+    def run(self):
         mlx_script_path = "default_meshing.mlx"
         input = "../temps/pointCloud.ply"
         output = "../temps/STLFILE.stl"
@@ -10,4 +10,3 @@ class MeshlabTask():
         print (open('tmp', 'r').read())
         os.remove('tmp')
 
-MeshlabTask.run()
