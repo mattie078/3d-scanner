@@ -16,8 +16,8 @@ class SaveToSD():
         for (os.dirpath, os.dirnames, os.filenames) in os.walk(dir_path):
             directories.extend(os.filenames)   # Voegt namen toe aan de array
             break
-	    dst_path = dst_path + str(directories[0] + datetime.now().strftime("%Y-%m-%dT%H:%M:%S") + ".stl") # Waarschijnlijk maar 1 resultaat, moeten we testen
 
+	dst_path = dst_path + str(directories[0] + datetime.now().strftime("%Y-%m-%dT%H:%M:%S") + ".stl") # Waarschijnlijk maar 1 resultaat, moeten we testen
 	print(str(dst_path))
 	#shutil.copy(src_path,dst_path)
 

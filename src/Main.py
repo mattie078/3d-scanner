@@ -2,22 +2,22 @@ from Coordinates import Coordinates
 from PixelsToMm import PixelsToMm
 from Integratie import Integratie
 from motor import Motor
-from SaveToSD import SaveToSD
+#from SaveToSD import SaveToSD
 import RPi.GPIO as GPIO
 import cv2
 import time
 
 buttonPin = 10
 
-pinRood = 36
-pinBlauw = 40
+pinRood = 40
+pinBlauw = 36
 pinGroen = 38
 
 def changeColor(color):
-    if color == 'red':
-        roodwaarde = (255 * 100) / 255
+    if color == 'blue':
+        roodwaarde = (0 * 100) / 255
         groenwaarde = (0 * 100) / 255
-        blauwwaarde = (0 * 100) / 255
+        blauwwaarde = (255 * 100) / 255
         
         ROOD.ChangeDutyCycle(roodwaarde)
         GROEN.ChangeDutyCycle(groenwaarde)
@@ -39,14 +39,14 @@ def waitForInput():
     while True:
         if GPIO.input(buttonPin) == GPIO.LOW:
             #print("Knop is ingedrukt!")
-            changeColor('red')
+            changeColor('blue')
             break   # Knop is ingedrukt
 
 def main():
     MotorObject = Motor()
     CoordinatesObject = Coordinates()
     IntegratieObject = Integratie()
-    SaveToSD_Object = SaveToSD()
+    #SaveToSD_Object = SaveToSD()
 
     waitForInput()
     time.sleep(2)
@@ -57,7 +57,7 @@ def main():
             print("Force stopping!")
             break
 
-        #MotorObject.turnMotor(i)
+        MotorObject.turnMotor(i)
         CoordinatesObject.calculate_coordinates(i)
 
     IntegratieObject.ReadFile()
@@ -65,7 +65,7 @@ def main():
     #PointCloud naar STL
     
     #Save to USB/SD
-    SaveToSD_Object.save()
+    #SaveToSD_Object.save()
 
 if __name__ == "__main__":
 
