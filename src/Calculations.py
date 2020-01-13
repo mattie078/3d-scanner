@@ -13,7 +13,7 @@ class Calculations:
         path = dir_path + '/../temps/xycoordinates/tempXY' + str(x) + '.txt'
         getmm_array = np.loadtxt(fname=path, dtype='float')
 
-        for y in range(0,getmm_array.shape[0]):                
+        for y in range(0,getmm_array.shape[0]):
             getmm_array[y][0]=getmm_array[y][0]/math.sin(np.deg2rad(12))  #12 veranderen naar angle
 
         return getmm_array
