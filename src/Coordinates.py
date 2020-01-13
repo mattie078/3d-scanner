@@ -47,7 +47,6 @@ class Coordinates:
         df2 = df2.drop_duplicates()
         # negeert y-waardes onder het platform
         df2 = df2[(df2 < platform_pixel_y_waarde)]    #NIET MEER NODIG
-
         # Deze loop haalt alle X waardes uit de dataframe die bij een bepaalde Y waarde hoort (X type = dataframe)
         avg_list = []
 
@@ -63,9 +62,10 @@ class Coordinates:
                 # hoogte, oftewel: het voorwerp bevindt zich onder deze y-waarde en deze punten moeten dus
                 # genegeerd worden. (zie Documenten/xyCalcsAfbeelding1.png)
                 # X-waarde van de rechter laser. Opgemeten uit foto's.
-                if val_np.max(axis=0) < 1120:
+                if val_np.max(axis=0) < 1000:
                     length = val_np.max(axis=0)-val_np.min(axis=0)
-                    avg_list.append([non_duplicated_yVal, length])
+                    if length > 10:  # filtert fouten door ruis uit
+                        avg_list.append([non_duplicated_yVal, length])
 
         print("Finished calc:"+str(i))  # NIET MEER NODIG
         np.savetxt('..\\temps\\calcs\\tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
