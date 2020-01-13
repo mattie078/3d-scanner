@@ -34,4 +34,4 @@ class PixelsToMm:
                 end_array.append([mm_breedte, mm_hoogte])
 
         print("Finished xycoordinates:"+str(i))
-        np.savetxt('..\\temps\\xycoordinates\\tempXY' + str(i) + '.txt', end_array, fmt='%f')
+        np.savetxt('../temps/xycoordinates/tempXY' + str(i) + '.txt', end_array, fmt='%f')
