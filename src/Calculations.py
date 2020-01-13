@@ -41,6 +41,9 @@ class Calculations:
                 polarangle, radius, motorAngle = self.cartesianToSpherical(hypo_array, x)
                 xcoordinate, ycoordinate, zcoordinate = self.SphericalToCartesian(polarangle, radius, motorAngle)
                 xyzArray.append([xcoordinate, ycoordinate, zcoordinate])
-        # print(xyzArray)        
+        #print(xyzArray)        
         ConverteerNaarPly(xyzArray)
         # print(hypo_array)
+
+CalcObj = Calculations()
+CalcObj.run()

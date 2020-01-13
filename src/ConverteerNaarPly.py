@@ -2,7 +2,7 @@ import numpy as np
 
 def ConverteerNaarPly(xyz):
 	# Een bestand wordt gemaakt om de pointCloud in op te slaan
-	file = open("..\\temps\\pointCloud.ply", "w+")
+	file = open("../temps/pointCloud.ply", "w+")
 
 	# Pointclouds hebben een standaard header (http://people.math.sc.edu/Burkardt/data/ply/ply.txt)
 	header = []
