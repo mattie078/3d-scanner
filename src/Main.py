@@ -2,6 +2,7 @@ from Coordinates import Coordinates
 from PixelsToMm import PixelsToMm
 from Integratie import Integratie
 from motor import Motor
+from Calculations import Calculations
 #from SaveToSD import SaveToSD
 import RPi.GPIO as GPIO
 import cv2
@@ -46,6 +47,7 @@ def main():
     MotorObject = Motor()
     CoordinatesObject = Coordinates()
     IntegratieObject = Integratie()
+    CalculationsObject = Calculations()
     #SaveToSD_Object = SaveToSD()
 
     waitForInput()
@@ -60,7 +62,8 @@ def main():
         MotorObject.turnMotor(i)
         CoordinatesObject.calculate_coordinates(i)
 
-    IntegratieObject.ReadFile()
+    #IntegratieObject.ReadFile() NIET MEER GEBRUIKEN = OUD
+    CalculationsObject.run()
     
     #PointCloud naar STL
     
