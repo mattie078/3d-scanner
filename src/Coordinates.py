@@ -9,10 +9,10 @@ class Coordinates:
 
     def calculate_coordinates(self, i):
         # De de afstand tussen de bovenkant van de foto en de voorkant van het platform (in pixels)
-        # platform_pixel_y_waarde = 570 NIET MEER NODIG
+        platform_pixel_y_waarde = 850 
         # Pakt de fotos die net zijn gemaakt
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        print(dir_path)
+        #print(dir_path)
         path = dir_path + "/../FotosHSV/filter" + str(i) + ".jpg"
         new_image = cv2.imread(path)
 
@@ -46,7 +46,7 @@ class Coordinates:
         df2 = df["yVal"]
         df2 = df2.drop_duplicates()
         # negeert y-waardes onder het platform
-        # df2 = df2[(df2 < platform_pixel_y_waarde)]    NIET MEER NODIG
+        df2 = df2[(df2 < platform_pixel_y_waarde)]    #NIET MEER NODIG
 
         # Deze loop haalt alle X waardes uit de dataframe die bij een bepaalde Y waarde hoort (X type = dataframe)
         avg_list = []
