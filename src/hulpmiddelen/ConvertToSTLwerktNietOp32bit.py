@@ -1,4 +1,4 @@
-import pyntcloud
+import open3d as o3d
 import trimesh
 import numpy as np
 

@@ -1,23 +1,65 @@
-import open3d as o3d
-import trimesh
-import numpy as np
+from xml.dom import minidom
+import xml
+import subprocess
+import shlex
 
-def ConvertToSTL():
-    pointcloud = o3d.io.read_point_cloud("temps\pointCloudTest.ply")
-    pointcloud.estimate_normals()
+class FSMeshlabTask():
 
-    # estimate radius voor de rolling ball
-    distances = pcd.compute_nearest_neighbor_distance()
-    avg_dist = np.mean(distances)
-    radius = 1.5 * avg_dist
+    def get_poitcloud_value_by_line(self, pointcloud_file, lookup):
+        with open(pointcloud_file) as myFile:
+            for num, line in enumerate(myFile, 1):
+                if lookup in line:
+                    number_of_pints = int(filter(str.isdigit, line))
+                    return number_of_pints
 
-    mesh = o3d.geometry.TriangleMesh.create_from_point_cloud_ball_pivoting(
-                pcd, o3d.utility.DoubleVector([radius, radius*2]))
+    def prepare_down_sampling(self, file, pointcloud_size):
 
-    output = trimesh.Trimesh(np.asarray(mesh.vertices), np.asarray(mesh.triangles),
-                vertex_normals=np.asarray(mesh.vertex_normals))
+        try:
+            xmldoc = minidom.parse(file)
+            # itemlist = xmldoc.getElementsByTagName('filter')
+            params = xmldoc.getElementsByTagName('Param')
+            for param in params:
+                if param.attributes['name'].value == "SampleNum":
+                    param.setAttribute('value', str(int(pointcloud_size / 3)))
 
-    output.export('eindresultaat.stl')
+        except xml.parsers.expat.ExpatError as ex:
+            print(ex)
 
+        with open(file, "wb") as fh:
+            xmldoc.writexml(fh)
 
-ConvertToSTL()
+    def run_command(command, blocking=False):
+
+        if blocking:
+            process = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+            output, _ = process.communicate()
+            rc = process.returncode
+        else:
+            process = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                       shell=False)
+            while True:
+                output = process.stdout.readline()
+                if output == '' and process.poll() is not None:
+                    break
+            process.poll()
+
+            rc = process.returncode
+
+        return rc
+
+    def run(self):
+        mlx_script_path = "default_meshing.mlx"
+
+        input = "/../temps/pointCloudTest.ply"
+        output = "/../temps/STLFILE.stl"
+
+        pointcloud_size = self.get_poitcloud_value_by_line(pointcloud_file=input, lookup="element vertex")
+        self.prepare_down_sampling(mlx_script_path, pointcloud_size)
+
+        return_code = self.run_command(
+            "xvfb-run meshlabserver -i " + input + " -o " + output + " -s " + mlx_script_path + " -om vc vn")
+
+        if return_code is 0:
+            print("MESH is succesvol aangemaakt!")
+        else:
+            print("ERROR: MESH aanmaken mislukt.")
