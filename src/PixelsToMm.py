@@ -11,7 +11,7 @@ class PixelsToMm:
 
         # pixels = a*milimeters + b
         a = 6.3933
-        b = -10.338
+        #b = -10.338
         hoek = 12
         # platform_pixel_y_waarde = 570 # opgemeten uit de verschillende foto's die we genomen hebben. Zat marge op.
                                         # NIET MEER NODIG
@@ -28,8 +28,8 @@ class PixelsToMm:
 
             if pixel_breedte < 250: # groot schepnet tegen ruis
 
-                mm_hoogte = ((pixel_hoogte - b) / a)
-                mm_breedte = ((pixel_breedte - b) / a)
+                mm_hoogte = ((pixel_hoogte) / a)
+                mm_breedte = ((pixel_breedte) / a)
 
                 end_array.append([mm_breedte, mm_hoogte])
 

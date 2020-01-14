@@ -67,8 +67,8 @@ class Coordinates:
                     # if length > 10:  # filtert fouten door ruis uit
                     avg_list.append([non_duplicated_yVal, length])
 
-        print("Finished calc:"+str(i))  # NIET MEER NODIG
-        np.savetxt('../temps/calcs/tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
+        #print("Finished calc:"+str(i))  # NIET MEER NODIG
+        #np.savetxt('../temps/calcs/tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
         PixelsToMmObject = PixelsToMm()
         PixelsToMmObject.calculate_real_distances(i, avg_list)   # linkt nu direct door.
         # Bespaart tijd omdat we nu niet meer naar de harde schijf lezen/schrijven, alles blijft in RAM.
