@@ -62,14 +62,13 @@ class Coordinates:
                 # hoogte, oftewel: het voorwerp bevindt zich onder deze y-waarde en deze punten moeten dus
                 # genegeerd worden. (zie Documenten/xyCalcsAfbeelding1.png)
                 # X-waarde van de rechter laser. Opgemeten uit foto's.
-                if val_np.max(axis=0) < 1000:
+                if val_np.max(axis=0) < 1120:
                     length = val_np.max(axis=0)-val_np.min(axis=0)
-                    if length > 10:  # filtert fouten door ruis uit
-                        print(length)
-                        avg_list.append([non_duplicated_yVal, length])
+                    # if length > 10:  # filtert fouten door ruis uit
+                    avg_list.append([non_duplicated_yVal, length])
 
         print("Finished calc:"+str(i))  # NIET MEER NODIG
-        np.savetxt('..\\temps\\calcs\\tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
+        np.savetxt('../temps/calcs/tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
         PixelsToMmObject = PixelsToMm()
         PixelsToMmObject.calculate_real_distances(i, avg_list)   # linkt nu direct door.
         # Bespaart tijd omdat we nu niet meer naar de harde schijf lezen/schrijven, alles blijft in RAM.

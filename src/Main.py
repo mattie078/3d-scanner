@@ -1,9 +1,8 @@
 from Coordinates import Coordinates
 from PixelsToMm import PixelsToMm
-from Integratie import Integratie
 from motor import Motor
 from Calculations import Calculations
-#from SaveToSD import SaveToSD
+from SaveToSD import SaveToSD
 import RPi.GPIO as GPIO
 import cv2
 import time
@@ -33,6 +32,8 @@ def changeColor(color):
         GROEN.ChangeDutyCycle(groenwaarde)
         BLAUW.ChangeDutyCycle(blauwwaarde)
 
+    elif color == 'red'
+
 def waitForInput():
     changeColor('green')
     
@@ -46,9 +47,9 @@ def waitForInput():
 def main():
     MotorObject = Motor()
     CoordinatesObject = Coordinates()
-    IntegratieObject = Integratie()
     CalculationsObject = Calculations()
-    #SaveToSD_Object = SaveToSD()
+    SaveToSD_Object = SaveToSD()
+    forceStopped = false
 
     waitForInput()
     time.sleep(2)
@@ -57,18 +58,16 @@ def main():
 
         if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop 
             print("Force stopping!")
+            forceStopped = true
+            changeColor('red')
             break
 
-        MotorObject.turnMotor(i)
+        #MotorObject.turnMotor(i)
         CoordinatesObject.calculate_coordinates(i)
-
-    #IntegratieObject.ReadFile() NIET MEER GEBRUIKEN = OUD
-    CalculationsObject.run()
     
-    #PointCloud naar STL
-    
-    #Save to USB/SD
-    #SaveToSD_Object.save()
+    if (!forceStopped):
+        CalculationsObject.run()
+        SaveToSD_Object.save()
 
 if __name__ == "__main__":
 
