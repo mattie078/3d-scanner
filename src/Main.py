@@ -32,7 +32,7 @@ def changeColor(color):
         GROEN.ChangeDutyCycle(groenwaarde)
         BLAUW.ChangeDutyCycle(blauwwaarde)
 
-    elif color == 'red'
+    elif color == 'red':
         roodwaarde = (255 * 100) / 255
         groenwaarde = (0 * 100) / 255
         blauwwaarde = (0 * 100) / 255
@@ -56,7 +56,7 @@ def main():
     CoordinatesObject = Coordinates()
     CalculationsObject = Calculations()
     SaveToSD_Object = SaveToSD()
-    forceStopped = false
+    forceStopped = False
 
     waitForInput()
     time.sleep(2)
@@ -65,14 +65,14 @@ def main():
 
         if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop 
             print("Force stopping!")
-            forceStopped = true
+            forceStopped = True
             changeColor('red')
             break
 
-        #MotorObject.turnMotor(i)
+        MotorObject.turnMotor(i)
         CoordinatesObject.calculate_coordinates(i)
     
-    if (!forceStopped):
+    if forceStopped==False:
         CalculationsObject.run()
         SaveToSD_Object.save()
 
