@@ -33,6 +33,13 @@ def changeColor(color):
         BLAUW.ChangeDutyCycle(blauwwaarde)
 
     elif color == 'red'
+        roodwaarde = (255 * 100) / 255
+        groenwaarde = (0 * 100) / 255
+        blauwwaarde = (0 * 100) / 255
+ 
+        ROOD.ChangeDutyCycle(roodwaarde)
+        GROEN.ChangeDutyCycle(groenwaarde)
+        BLAUW.ChangeDutyCycle(blauwwaarde)
 
 def waitForInput():
     changeColor('green')
