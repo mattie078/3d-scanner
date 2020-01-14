@@ -64,7 +64,7 @@ class Coordinates:
                 # X-waarde van de rechter laser. Opgemeten uit foto's.
                 if val_np.max(axis=0) < 1120:
                     length = val_np.max(axis=0)-val_np.min(axis=0)
-                    # if length > 10:  # filtert fouten door ruis uit
+                    #if length > 10:  # filtert fouten door ruis uit
                     avg_list.append([non_duplicated_yVal, length])
 
         #print("Finished calc:"+str(i))  # NIET MEER NODIG
