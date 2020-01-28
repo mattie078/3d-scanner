@@ -1,7 +1,0 @@
-51 mm van middelpunt, 11mm afstand tussen lasers
-59 pixels tussen lasers, 59/11 ppmm
-
-78mm van middelpunt, 16.5mm afstand tussen lasers
-101 pixels tussen lasers, 202/33 ppmm
-
-niet lineair, te grote afwijking

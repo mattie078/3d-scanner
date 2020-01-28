@@ -1,6 +1,6 @@
 from Coordinates import Coordinates
 from PixelsToMm import PixelsToMm
-from motor import Motor
+from Motor import Motor
 from Calculations import Calculations
 from SaveToSD import SaveToSD
 import RPi.GPIO as GPIO
