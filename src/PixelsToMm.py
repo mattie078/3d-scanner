@@ -7,11 +7,12 @@ class PixelsToMm:
 
     def calculate_real_distances(self, i, tempList):
         # Formule van de kalibratie: 
-        # pixels = (6,3933* mm) - 10,338
-
-        # pixels = a*milimeters + b
-        a = 6.3933
-        #b = -10.338
+        # milimeters = 0.2 * (pixels - 5)
+        # mm = a * (px - b)
+        # nb: de b hier is de breedte van een laserstraal, omdat we de buitekant van de laserstralen meten. Ook op een afstand van 0 mm hebben we dus 5 pixels aan afstand.
+        # Voor het berekenen van de hoogte in milimeters maakt de dikte van de laser niet uit; hier is de b in de formule dus gewoon 0.
+        a = 0.2
+        b = 5
         hoek = 12
         # platform_pixel_y_waarde = 570 # opgemeten uit de verschillende foto's die we genomen hebben. Zat marge op.
                                         # NIET MEER NODIG
@@ -28,8 +29,8 @@ class PixelsToMm:
 
             if pixel_breedte < 250: # groot schepnet tegen ruis
 
-                mm_hoogte = ((pixel_hoogte) / a)
-                mm_breedte = ((pixel_breedte) / a)
+                mm_hoogte = a*pixel_hoogte
+                mm_breedte = a*(pixel_breedte-b)
 
                 end_array.append([mm_breedte, mm_hoogte])
 
