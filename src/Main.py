@@ -13,21 +13,22 @@ pinRood = 40
 pinBlauw = 36
 pinGroen = 38
 
+
 def changeColor(color):
     if color == 'blue':
         roodwaarde = (0 * 100) / 255
         groenwaarde = (0 * 100) / 255
         blauwwaarde = (255 * 100) / 255
-        
+
         ROOD.ChangeDutyCycle(roodwaarde)
         GROEN.ChangeDutyCycle(groenwaarde)
         BLAUW.ChangeDutyCycle(blauwwaarde)
-    
+
     elif color == 'green':
         roodwaarde = (0 * 100) / 255
         groenwaarde = (255 * 100) / 255
         blauwwaarde = (0 * 100) / 255
- 
+
         ROOD.ChangeDutyCycle(roodwaarde)
         GROEN.ChangeDutyCycle(groenwaarde)
         BLAUW.ChangeDutyCycle(blauwwaarde)
@@ -36,20 +37,22 @@ def changeColor(color):
         roodwaarde = (255 * 100) / 255
         groenwaarde = (0 * 100) / 255
         blauwwaarde = (0 * 100) / 255
- 
+
         ROOD.ChangeDutyCycle(roodwaarde)
         GROEN.ChangeDutyCycle(groenwaarde)
         BLAUW.ChangeDutyCycle(blauwwaarde)
 
+
 def waitForInput():
     changeColor('green')
-    
+
     #print("Waiting on initial input...")
     while True:
         if GPIO.input(buttonPin) == GPIO.LOW:
             #print("Knop is ingedrukt!")
             changeColor('blue')
             break   # Knop is ingedrukt
+
 
 def main():
     MotorObject = Motor()
@@ -61,9 +64,9 @@ def main():
     waitForInput()
     time.sleep(2)
 
-    for i in range(73): # alleen voor debugging
+    for i in range(73):  # alleen voor debugging
 
-        if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop 
+        if GPIO.input(buttonPin) == GPIO.LOW:  # Force stop
             print("Force stopping!")
             forceStopped = True
             changeColor('red')
@@ -71,10 +74,11 @@ def main():
 
         MotorObject.turnMotor(i)
         CoordinatesObject.calculate_coordinates(i)
-    
-    if forceStopped==False:
+
+    if not forceStopped:
         CalculationsObject.run()
         SaveToSD_Object.save()
+
 
 if __name__ == "__main__":
 
@@ -94,5 +98,3 @@ if __name__ == "__main__":
     BLAUW.start(0)
 
     main()
-
-

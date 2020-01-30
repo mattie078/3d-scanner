@@ -8,11 +8,12 @@ import os
 class Coordinates:
 
     def calculate_coordinates(self, i):
-        # De de afstand tussen de bovenkant van de foto en de voorkant van het platform (in pixels)
-        platform_pixel_y_waarde = 850 
+        # De de afstand tussen de bovenkant van de foto en de voorkant van het
+        # platform (in pixels)
+        platform_pixel_y_waarde = 850
         # Pakt de fotos die net zijn gemaakt
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        #print(dir_path)
+        # print(dir_path)
         path = dir_path + "/../FotosHSV/filter" + str(i) + ".jpg"
         new_image = cv2.imread(path)
 
@@ -42,18 +43,21 @@ class Coordinates:
         zipped_list = coordinates_no_dupes1[:]
         df = pd.DataFrame(zipped_list, columns={'yVal', 'xVal'})
 
-        # Haalt alle unieke Y waardes uit de dataframe en slaat ze op in een nieuwe
+        # Haalt alle unieke Y waardes uit de dataframe en slaat ze op in een
+        # nieuwe
         df2 = df["yVal"]
         df2 = df2.drop_duplicates()
         # negeert y-waardes onder het platform
-        df2 = df2[(df2 < platform_pixel_y_waarde)]    #NIET MEER NODIG
-        # Deze loop haalt alle X waardes uit de dataframe die bij een bepaalde Y waarde hoort (X type = dataframe)
+        df2 = df2[(df2 < platform_pixel_y_waarde)]  # NIET MEER NODIG
+        # Deze loop haalt alle X waardes uit de dataframe die bij een bepaalde
+        # Y waarde hoort (X type = dataframe)
         avg_list = []
 
         for index_old, non_duplicated_yVal in df2.iteritems():
             val = df.loc[df["yVal"] == non_duplicated_yVal, "xVal"]
 
-            # val.real returned 'normale' array inplaats van een dataframe (voor makkelijkere verwerking)
+            # val.real returned 'normale' array inplaats van een dataframe
+            # (voor makkelijkere verwerking)
             val_np = val.to_numpy().real
             if val_np.size != 0:
                 # alleen waardes aan de linkerkant van de laser in het midden moeten meegenomen worden.
@@ -63,12 +67,14 @@ class Coordinates:
                 # genegeerd worden. (zie Documenten/xyCalcsAfbeelding1.png)
                 # X-waarde van de rechter laser. Opgemeten uit foto's.
                 if val_np.max(axis=0) < 1120:
-                    length = val_np.max(axis=0)-val_np.min(axis=0)
-                    #if length > 10:  # filtert fouten door ruis uit
+                    length = val_np.max(axis=0) - val_np.min(axis=0)
+                    # if length > 10:  # filtert fouten door ruis uit
                     avg_list.append([non_duplicated_yVal, length])
 
-        #print("Finished calc:"+str(i))  # NIET MEER NODIG
+        # print("Finished calc:"+str(i))  # NIET MEER NODIG
         #np.savetxt('../temps/calcs/tempCalc' + str(i) + '.txt', avg_list, fmt='%d')
         PixelsToMmObject = PixelsToMm()
-        PixelsToMmObject.calculate_real_distances(i, avg_list)   # linkt nu direct door.
-        # Bespaart tijd omdat we nu niet meer naar de harde schijf lezen/schrijven, alles blijft in RAM.
+        # linkt nu direct door.
+        PixelsToMmObject.calculate_real_distances(i, avg_list)
+        # Bespaart tijd omdat we nu niet meer naar de harde schijf
+        # lezen/schrijven, alles blijft in RAM.
